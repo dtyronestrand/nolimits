@@ -19,7 +19,8 @@
 </template>
 
 <script lang="ts" setup>
-import { cn } from "@/lib/utils";
+// Update the path below to the correct relative path to your utils.ts file
+import { cn } from "../../../lib/utils";
 import { ref, computed, type HTMLAttributes } from "vue";
 
 interface InteractiveGridPatternProps {

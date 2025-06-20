@@ -62,6 +62,7 @@ defineProps<Props>();
     
 </template>
 <style scoped>
+@reference "../../../../../css/app.css";
 .banner {
       display: flex;
   justify-content: center;

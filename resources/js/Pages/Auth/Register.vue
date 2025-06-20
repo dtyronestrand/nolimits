@@ -7,6 +7,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import InteractiveGridPattern from '@/Components/Theme/UI/InteractiveGridPattern.vue';
 
 const form = useForm({
     first_name: '',
@@ -26,27 +27,45 @@ const submit = () => {
 
 <template>
     <Head title="Register" />
-
+    <InteractiveGridPattern  :class="'[mask-image:radial-gradient(750px_circle_at_center,white,transparent)] '"
+      :width="40"
+      :height="40"
+      :squares="[80, 80]"
+      squares-class-name="hover:fill-[var(--color-accent)]" />
     <AuthenticationCard>
         <template #logo>
             <AuthenticationCardLogo />
+        
         </template>
-
+<div>
+    <h1 class="text-[var(--color-text-primary)] mb-6 text-center text-3xl">Create An Account</h1>
+</div>
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="first_name" value="First Name" />
                 <TextInput
-                    id="name"
-                    v-model="form.name"
+                    id="first_name"
+                    v-model="form.first_name"
                     type="text"
                     class="mt-1 block w-full"
                     required
                     autofocus
-                    autocomplete="name"
+                    autocomplete="given-name"
                 />
-                <InputError class="mt-2" :message="form.errors.name" />
+                <InputError class="mt-2" :message="form.errors.first_name" />
             </div>
-
+<div class="mt-4">
+<InputLabel for="last_name" value="Last Name" />
+                <TextInput
+                    id="last_name"
+                    v-model="form.last_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="family-name"
+                />
+                <InputError class="mt-2" :message="form.errors.last_name" />
+</div>
             <div class="mt-4">
                 <InputLabel for="email" value="Email" />
                 <TextInput
@@ -100,7 +119,7 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <Link :href="route('login')" class="underline text-sm text-[var(--color-neutral-100)] hover:text-[var(--color-accent)] rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-i[var(--color-accent)]">
                     Already registered?
                 </Link>
 
@@ -110,4 +129,7 @@ const submit = () => {
             </div>
         </form>
     </AuthenticationCard>
+    
+
+
 </template>

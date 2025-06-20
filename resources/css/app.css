@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import "tw-animate-css";
 
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
@@ -6,6 +7,7 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../vendor/laravel/jetstream/**/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@source '../js/**/*.vue';
 
 @theme {
   --font-sans:
@@ -27,13 +29,18 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-accent, currentcolor);
+  }
+    *{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+   line-height: 1.5;
   }
 }
 
 :root {
-  
-    --primary-color: #f4d03f;
+    --primary-color:var(--color-primary-500);
     --primary-glow: #f9e35b;
     --secondary-color:#e67e22;
     --text-color: #f5f7f9;
@@ -143,15 +150,14 @@
     --color-text-inverse: var(--color-neutral-900);
     --color-focus: #f4d03f;
   }
-  *{
-    box-sizing: border-box;
-    margin:0;
-    padding:0;
-      line-height: 1.5;
-  }
+
 
   body{
-background: var(--gradient-bg);
+background: var(--color-base-900);
+background-image: url('/assets/noise-texture.svg');
+  background-size: cover;
+  background-attachment: fixed;
+
     
   
  display:flex;

@@ -163,14 +163,14 @@
   <div class="grid grid-cols-3 gap-4 pt-10 sm:grid-cols-2">
           <div>
     <p class="font-medium text-(--color-text-primary)">Navigation</p>
-    <ul class="mt-6 space-y-4 text-sm">
+    <ul class="flex flex-col mt-6 gap-4 text-sm">
     <li v-for="link in $page.props.navigations" :key="link.id">
     <NavLink :href="link.url" class="text-(--color-text-primary) hover:text-(--color-accent)">{{ link.title }}</NavLink>
     </li>
     </ul>
        </div>
          <div>
-          <ul class="mt-5 space-y-4 ml-10 text-sm">
+          <ul class="mt-5 flex flex-row gap-4 ml-10 text-sm">
             <li>
               <a href="#" class="text-(--color-text-primary)   transition hover:opacity-75"> Terms & Conditions </a>
             </li>
