@@ -7,6 +7,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import InteractiveGridPattern from '@/Components/Theme/UI/InteractiveGridPattern.vue';
 
 defineProps({
     canResetPassword: Boolean,
@@ -31,7 +32,11 @@ const submit = () => {
 
 <template>
     <Head title="Log in" />
-
+    <InteractiveGridPattern  :class="'[mask-image:radial-gradient(750px_circle_at_center,white,transparent)] '"
+      :width="40"
+      :height="40"
+      :squares="[80, 80]"
+      squares-class-name="hover:fill-[var(--color-accent)]" />
     <AuthenticationCard>
         <template #logo>
             <AuthenticationCardLogo />
@@ -72,12 +77,12 @@ const submit = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ms-2 text-sm text-[var(--color-text-primary)]">Remember me</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-[var(--color-text-primary)] hover:text-[var(--color-accent)] rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-i[var(--color-accent)]">
                     Forgot your password?
                 </Link>
 
