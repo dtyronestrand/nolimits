@@ -32,7 +32,7 @@ const props = defineProps<Props>();
 <template>
     <div>
                <h1 v-if="block.content?.heading" class="text-7xl font-bold text-center text-[var(--color-text-primary)] mb-10">{{ block.content.heading }}</h1>
-        <div class="flex flex-row justify-evenly gap-8 items-center "> <!-- Assuming this container was intended -->
+        <div class="flex  flex-col md;flex-row justify-evenly gap-8 items-center "> <!-- Assuming this container was intended -->
  
             <!-- Loop through each child to create a card -->
             <div

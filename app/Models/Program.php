@@ -11,6 +11,7 @@ use A17\Twill\Models\Behaviors\HasPosition;
 use A17\Twill\Models\Behaviors\HasNesting;
 use A17\Twill\Models\Behaviors\Sortable;
 use App\Models\Base\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Program extends Model implements Sortable
 {
@@ -46,5 +47,12 @@ protected $translatable =[
     public $slugAttributes = [
         'title',
     ];
+
+    public function profiles(): BelongsToMany
+    {
+        return $this->belongsToMany(Profile::class, 'profile_program')
+            ->withPivot('date_enrolled', 'active', 'details')
+            ->withTimestamps();
+    }
     
 }

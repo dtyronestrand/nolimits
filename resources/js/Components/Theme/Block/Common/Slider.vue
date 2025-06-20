@@ -183,7 +183,7 @@ onUnmounted(() => {
 </script>
 <template>
 
-  <h2 class="text-center text-7xl py-12 text-balance text-[var(--color-text-primary)]">We Remove the Limits to a Healthier You!</h2> 
+  <h2 class="text-center bg-[var(--color-primary-800)] text-[3rem] py-12 text-balance text-[var(--color-text-primary)]">We Remove the Limits to a Healthier You!</h2> 
 
     <div class="slider-container" v-if="props.block.childs && props.block.childs.length > 0">
         <div ref="controlLeftRef" class="slider-control left inactive" @click="navigateLeft"></div>

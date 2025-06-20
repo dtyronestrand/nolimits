@@ -44,7 +44,7 @@ defineProps<Props>();
           </IconButton>
   
     
-          <Link href="/login" aria-label="" class="px-8 py-3  text-[var(--color-neutral-100)] font-bold hover:text-[var(--color-accent-800)] text-2xl transition-colors">Already started your journey? Login!</Link>
+          <Link href="/login" aria-label="" class="px-8   text-[var(--color-neutral-100)] font-bold hover:text-[var(--color-accent-800)] text-2xl transition-colors">Already started your journey? Login!</Link>
   </div>
   </div>
   <div v-else-if="block.content.variant === 'banner'" class="banner">
@@ -164,19 +164,18 @@ defineProps<Props>();
 	align-self: center;
 	color: #fff;
 	text-align: center;
-	padding: 0;
     background-color: rgba(from var(--color-primary-800) R G B /0.7);
     backdrop-filter: blur(10px);
-    @apply text-balance rounded-lg;
+    @apply py-6 text-balance rounded-lg;
     width: 75%;
     margin: 0 auto;
-    margin-top: 9rem;
+    margin-top: 10rem;
 }
 /* responsive h3 and p */
 .content h1 {
 
 	place-self: center;
-	font-size: clamp(2rem, 10vw, 5rem);
+	font-size: clamp(2rem, 10vw, 3rem);
 	text-align: center;
 	text-decoration: underline;
 	text-decoration-thickness: 3px;
@@ -185,7 +184,7 @@ defineProps<Props>();
 .content p {
 
 	font-weight: 400;
-	font-size: clamp(1.2rem, 6vw, 3rem);
+	font-size: clamp(1.2rem, 6vw, 2rem);
 }
 
 

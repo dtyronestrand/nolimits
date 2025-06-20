@@ -40,8 +40,8 @@ const BlockCommonSlider = defineAsyncComponent(()=>import('../Components/Theme/B
 </div>
 </div>
 <div class="flex flex-row  w-full">
-    <div class="flex flex-col h-full w-[40%] bg-[var(--color-primary-900)] text-[var(--color-text-primary)] p-10 border-2 border-[var(--color-accent-500)] shadow-lg ">
-<h2 class="text-5xl mb-8 h-[100%] text-center">Find Your Move!</h2>
+    <div class="flex flex-col h-[1] w-[40%] bg-[var(--color-primary-900)] text-[var(--color-text-primary)] p-10 border-2 border-[var(--color-accent-500)] shadow-lg ">
+<h2 class="text-5xl mb-8 text-center">Find Your Move!</h2>
 <img src="/assets/images/image-2.png">
 <IconButton type="button" class="mt-6 mb-10 p-2 bg-[var(--color-accent-500)] text-[var(--color-neutral-900)] hover:text-[var(--color-accent-500)] hover:border-4 hover:border-[var(--color-accent-500)] rounded-lg]" href="/programs">Explore Our Programs</IconButton>
 </div>
