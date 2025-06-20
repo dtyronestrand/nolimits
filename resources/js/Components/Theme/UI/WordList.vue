@@ -64,7 +64,7 @@ onUnmounted(() => {
 </script>
 <template>
     <section
-        class="fixed inset-0 top-30 -z-30 h-vh overflow-hidden rounded bg-transparent"
+        class="fixed inset-0 top-30 -z-30 h-vh overflow-hidden rounded-sm bg-transparent"
         aria-hidden="true"
         > <!-- Added aria-hidden as it's decorative -->
         <!-- Iterate through each word to create a row -->

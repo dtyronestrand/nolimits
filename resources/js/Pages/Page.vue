@@ -17,7 +17,7 @@ const BlockCommonCards = defineAsyncComponent(() => import('../Components/Theme/
 <Head :item="props.item" :locale="props.locale"></Head>
 <Default>
 
-    <div v-if="props.item?.blocks && Array.isArray(props.item.blocks) && props.item.blocks.length > 0" class="w-full flex flex-col flex-grow">
+    <div v-if="props.item?.blocks && Array.isArray(props.item.blocks) && props.item.blocks.length > 0" class="w-full flex flex-col grow">
         <div v-for="(block, index) in props.item.blocks" :key="block.id || index">
             <BlockCommonHero v-if="block.type === 'common-hero'" :block="block"></BlockCommonHero>
             <BlockCommonCards v-if="block.type === 'common-cards'" :block="block"></BlockCommonCards>

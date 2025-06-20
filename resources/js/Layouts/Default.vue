@@ -1,12 +1,12 @@
 <template>
-    <div class="relative min-h-[100vh]">
-   <div class="pb-[2.5rem]">
+    <div class="relative min-h-screen">
+   <div class="pb-10">
    <!-- Added z-20 to ensure header is above other content, including the main area and any fixed backgrounds -->
-     <header class=" sticky z-20 top-0 left-0 w-[100vw] bg-[var(--color-primary-800)] border-b border-[var(--color-accent-500)] ">
-    <nav class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+     <header class=" sticky z-20 top-0 left-0 w-screen bg-(--color-primary-800) border-b border-(--color-accent-500) ">
+    <nav class="max-w-(--breakpoint-xl) flex flex-wrap items-center justify-between mx-auto p-4">
         <!-- Logo -->
         <NavLink href="/" class="flex items-center">
-            <span class="self-center text-xl font-semibold whitespace-nowrap text-[var(--color-accent-500)]">NLMAF</span>
+            <span class="self-center text-xl font-semibold whitespace-nowrap text-(--color-accent-500)">NLMAF</span>
          
         </NavLink>
 
@@ -17,7 +17,7 @@
  
          
             
-            <div v-if="$page.props.auth.user" class="md:order-2 ml-2 sm:mr-2"> <!-- Adjusted margins for consistency --><span class="mr-2 text-lg text-[var(--color-text-primary)]"><a href="/user/profile" >{{ $page.props.auth.user.name }}</a></span>
+            <div v-if="$page.props.auth.user" class="md:order-2 ml-2 sm:mr-2"> <!-- Adjusted margins for consistency --><span class="mr-2 text-lg text-(--color-text-primary)"><a href="/user/profile" >{{ $page.props.auth.user.name }}</a></span>
                 <SecondaryButton @click="handleLogout">Logout</SecondaryButton>
             </div>
             <div v-else class="md:order-2 ml-2 sm:mr-2"> <!-- Adjusted margins for consistency -->
@@ -27,7 +27,7 @@
             <!-- Mobile Menu Hamburger Button -->
           <button type="button"
     @click="toggleMobileMenu"
-    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-md md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-md md:hidden hover:bg-gray-100 focus:outline-hidden focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
     :aria-expanded="isMobileMenuOpen.toString()"
     aria-controls="main-menu-content">
                 <span class="sr-only">Open main menu</span>
@@ -52,12 +52,12 @@
             <ul class="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
                 <li v-for="link in $page.props.navigations" :class="link.submenu !== null ? 'has-dropdown' : ''" :key="link.id">
                     <NavLink v-if="!link.submenu" :href="link.url"
-                       :active="isLinkActive(link.url)" class="block py-2 pl-3 pr-4 rounded md:bg-transparent bg-[var(--color-primary-600)] md:p-0 text-[var(--color-text-primary)] transition hover:text-[var(--color-secondary-500)]"
+                       :active="isLinkActive(link.url)" class="block py-2 pl-3 pr-4 rounded-sm md:bg-transparent bg-(--color-primary-600) md:p-0 text-(--color-text-primary) transition hover:text-(--color-secondary-500)"
                         aria-current="page">{{ link.title }}</NavLink>
                     <span v-else>
                         <NavLink :href="link.url"
                             :active="isParentLinkActive(link.url)"
-                            class=" block py-2 pl-3 pr-4 rounded md:flex md:bg-transparent bg-[var(--color-primary-600)] md:p-0 text-[var(--color-text-primary)] transition hover:text-[var(--color-secondary-500)]">
+                            class=" block py-2 pl-3 pr-4 rounded-sm md:flex md:bg-transparent bg-(--color-primary-600) md:p-0 text-(--color-text-primary) transition hover:text-(--color-secondary-500)">
                         {{ link.title }} <svg class="icon chevron-icon" viewBox="0 0 24 24" width="14" height="14">
                             <path d="M7 10l5 5 5-5z" fill="currentColor"></path>
                         </svg>
@@ -77,17 +77,17 @@
          z-0 ensures this main content area is above any z-index: -1 elements (like the homepage canvas)
          and correctly positioned below the z-20 header.
          IMPORTANT: Replace 'bg-white dark:bg-neutral-800' with your site's actual page background color classes or variables. -->
-    <main class="gradient flex-grow flex flex-col"> <!-- Allow main to grow and be a flex container for its slot -->
+    <main class="gradient grow flex flex-col"> <!-- Allow main to grow and be a flex container for its slot -->
         <slot></slot>
      
     </main>
- <footer class="bg-[var(--color-primary-800)] border-t border-[var(--color-accent)] mt-auto absolute bottom-0 h-[2.5rem]">
- <div class=" lg:grid lg:grid-cols-8 bg-[var(--color-primary-800)]">
+ <footer class="bg-(--color-primary-800) border-t border-(--color-accent) mt-auto absolute bottom-0 h-10">
+ <div class=" lg:grid lg:grid-cols-8 bg-(--color-primary-800)">
     <div class="relative ml-10 block lg:col-span-3">
         <img src="/assets/images/Z2sbZpbqstJ980jJ_NLMAF_LOGO_2shues_smallcropped.jpeg" 
              alt="No Limits Martial Arts and Fitness" 
           class="relative ml-10 mt-4 mb-8 aspect-auto h-auto w-1/4 rounded-full object-cover">
-        <p class="mt-8 text-xs text-[var(--color-text-primary)] sm:mt-0">
+        <p class="mt-8 text-xs text-(--color-text-primary) sm:mt-0">
             &copy; 2025. No Limits Martial Arts and Fitness. All rights reserved.
           </p>
   
@@ -97,8 +97,8 @@
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
         <div>
           <p>
-     <span class="text-xl tracking-wide text-[var(--color-text-primary)] uppercase"> Contact Us</span>
-    <span class="block text-xl font-medium text-[var(--color-text-primary)]">804-867-5309</span>
+     <span class="text-xl tracking-wide text-(--color-text-primary) uppercase"> Contact Us</span>
+    <span class="block text-xl font-medium text-(--color-text-primary)">804-867-5309</span>
     <PrimaryButton >Leave a Message</PrimaryButton>
     </p>
      <ul class="mt-8 text-center flex gap-6">
@@ -107,7 +107,7 @@
                 href="#"
                 rel="noreferrer"
                 target="_blank"
-                class="text-[var(--color-accent)] transition hover:opacity-75"
+                class="text-(--color-accent) transition hover:opacity-75"
               >
                 <span class="sr-only">Facebook</span>
   
@@ -126,7 +126,7 @@
                 href="#"
                 rel="noreferrer"
                 target="_blank"
-                class="text-[var(--color-accent)] transition hover:opacity-75"
+                class="text-(--color-accent) transition hover:opacity-75"
               >
                 <span class="sr-only">Instagram</span>
   
@@ -145,7 +145,7 @@
                 href="#"
                 rel="noreferrer"
                 target="_blank"
-                class="text-[var(--color-accent)] transition hover:opacity-75"
+                class="text-(--color-accent) transition hover:opacity-75"
               >
                 <span class="sr-only">Twitter</span>
   
@@ -162,25 +162,25 @@
     </div>
   <div class="grid grid-cols-3 gap-4 pt-10 sm:grid-cols-2">
           <div>
-    <p class="font-medium text-[var(--color-text-primary)]">Navigation</p>
+    <p class="font-medium text-(--color-text-primary)">Navigation</p>
     <ul class="mt-6 space-y-4 text-sm">
     <li v-for="link in $page.props.navigations" :key="link.id">
-    <NavLink :href="link.url" class="text-[var(--color-text-primary)] hover:text-[var(--color-accent)]">{{ link.title }}</NavLink>
+    <NavLink :href="link.url" class="text-(--color-text-primary) hover:text-(--color-accent)">{{ link.title }}</NavLink>
     </li>
     </ul>
        </div>
          <div>
           <ul class="mt-5 space-y-4 ml-10 text-sm">
             <li>
-              <a href="#" class="text-[var(--color-text-primary)]   transition hover:opacity-75"> Terms & Conditions </a>
+              <a href="#" class="text-(--color-text-primary)   transition hover:opacity-75"> Terms & Conditions </a>
             </li>
   
             <li>
-              <a href="#" class="text-[var(--color-text-primary)]   transition hover:opacity-75"> Privacy Policy </a>
+              <a href="#" class="text-(--color-text-primary)   transition hover:opacity-75"> Privacy Policy </a>
             </li>
   
             <li>
-              <a href="#" class="text-[var(--color-text-primary)]   transition hover:opacity-75"> Cookies </a>
+              <a href="#" class="text-(--color-text-primary)   transition hover:opacity-75"> Cookies </a>
             </li>
           </ul>
   

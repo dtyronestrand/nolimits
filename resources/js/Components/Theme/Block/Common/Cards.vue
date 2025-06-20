@@ -31,13 +31,13 @@ const props = defineProps<Props>();
 </script>
 <template>
     <div>
-               <h1 v-if="block.content?.heading" class="text-7xl font-bold text-center text-[var(--color-text-primary)] mb-10">{{ block.content.heading }}</h1>
+               <h1 v-if="block.content?.heading" class="text-7xl font-bold text-center text-(--color-text-primary) mb-10">{{ block.content.heading }}</h1>
         <div class="flex  flex-col md;flex-row justify-evenly gap-8 items-center "> <!-- Assuming this container was intended -->
  
             <!-- Loop through each child to create a card -->
             <div
                 v-if="block.childs && block.childs.length > 0"
-                class="profile w-1/2 shadow-xl rounded-2xl  border-2 border-[var(--color-accent)] text-[var(--color-text-primary)] mb-10" 
+                class="profile w-1/2 shadow-xl rounded-2xl  border-2 border-(--color-accent) text-(--color-text-primary) mb-10" 
                 v-for="(child, index) in block.childs" 
                 :key="child.id || child.content?.title || index" 
             >

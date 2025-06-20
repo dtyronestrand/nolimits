@@ -37,14 +37,14 @@ defineProps<Props>();
             <IconButton
             v-if="block.content?.button_url && block.content?.button_text"
             :href="block.content.button_url"
-            class="py-3 w-1/6 mx-auto mt-8 mb-4 bg-[var(--color-accent)]  text-[var(--color-neutral-900)] font-medium rounded-full hover:bg-transparent hover:border-[var(--color-accent-500)] hover:text-[var(--color-text-primary)] transition-colors"
+            class="py-3 w-1/6 mx-auto mt-8 mb-4 bg-(--color-accent)  text-neutral-900 font-medium rounded-full hover:bg-transparent hover:border-(--color-accent-500) hover:text-(--color-text-primary) transition-colors"
           >
              
             {{ block.content.button_text }}
           </IconButton>
   
     
-          <Link href="/login" aria-label="" class="px-8   text-[var(--color-neutral-100)] font-bold hover:text-[var(--color-accent-800)] text-2xl transition-colors">Already started your journey? Login!</Link>
+          <Link href="/login" aria-label="" class="px-8   text-neutral-100 font-bold hover:text-(--color-accent-800) text-2xl transition-colors">Already started your journey? Login!</Link>
   </div>
   </div>
   <div v-else-if="block.content.variant === 'banner'" class="banner">

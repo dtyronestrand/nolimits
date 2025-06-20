@@ -6,16 +6,16 @@
     -->
     
     <a
-      class="group flex items-center justify-between gap-4 rounded-lg border border-[var(--color-accent)] bg-[var(--color-accent)] px-5 py-3 transition-colors hover:border-3 hover:border-[var(--color-accent-500)] hover:bg-transparent focus:ring-3 "
+      class="group flex items-center justify-between gap-4 rounded-lg border border-(--color-accent) bg-(--color-accent) px-5 py-3 transition-colors hover:border-3 hover:border-(--color-accent-500) hover:bg-transparent focus:ring-3 "
       :href="href"
     >
-      <span class="font-bold text-[var(--color-inverse-text))] text-xl transition-colors group-hover:text-[var(--color-text-primary)]">
+      <span class="font-bold text-(--color-inverse-text) text-xl transition-colors group-hover:text-(--color-text-primary)">
 <slot/>
       </span>
     
-      <span class="shrink-0 rounded-full border-2 border-current bg-[var(--color-accent-300)] p-2 text-[var(--color-text-inverse)] group-hover:bg-transparent group-hover:border-[var(--color-accent-500)]  group-hover:text-[var(--color-accent-500)] transition-colors">
+      <span class="shrink-0 rounded-full border-2 border-current bg-(--color-accent-300) p-2 text-(--color-text-inverse) group-hover:bg-transparent group-hover:border-(--color-accent-500)  group-hover:text-(--color-accent-500) transition-colors">
         <svg
-          class="size-5 shadow-sm rtl:rotate-180"
+          class="size-5 shadow-xs rtl:rotate-180"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
