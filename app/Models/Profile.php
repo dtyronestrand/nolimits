@@ -17,6 +17,16 @@ class Profile extends Model
         'published',
         'title',
         'description',
+        'first_name',
+        'last_name',
+        'bio',
+        'email',
+        'program_user_id',
+        'role_user_id',
+        'address',
+        'city',
+        'state',
+        'zip',
     ];
     
     public $translatedAttributes = [

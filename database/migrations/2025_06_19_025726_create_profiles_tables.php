@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('state', 100)->nullable();
             $table->string('zip', 20)->nullable();
             $table->foreignId('user_id')
-            ->contrained()
+            ->constrained()
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->timestamps();

@@ -8,7 +8,6 @@ use A17\Twill\Services\Forms\Form;
 use A17\Twill\Services\Forms\Fields\BlockEditor;
 use A17\Twill\Services\Forms\Fieldset;
 use A17\Twill\Http\Controllers\Admin\NestedModuleController;
-use App\Models\Base\Model;
 
 
 class PageController extends NestedModuleController
@@ -33,9 +32,9 @@ class PageController extends NestedModuleController
     protected function form(?int $id, ?TwillModelContract $item = null): array
     {
         $data = parent::form($id, $item);
-
-        $data['baseUrl'] = $data['baseUrl'] . $data['item']->ancestorsSlug . '/';
-
+        if ($data['item']?->id && $data['item']->ancestorsSlug) {
+            $data['baseUrl'] .= $data['item']->ancestorsSlug . '/';
+        }
         return $data;
     }
 
@@ -51,39 +50,38 @@ class PageController extends NestedModuleController
 
         $form->add(
             BlockEditor::make()
-          
         );
 
         return $form;
     }
-public function getSideFieldsets(TwillModelContract $model): Form
-{
-    $form = parent::getSideFieldsets($model);
 
-$form->addFieldset(
-    Fieldset::make()
-        ->title('SEO')
-        ->id('seo')
-        ->fields([
-            Input::make()
-                ->name('meta_title')
-                ->label('Meta title')
-                ->translatable()
-                ->maxlength(200),
-              
-            Input::make()
-                ->name('meta_description')
-                ->label('Meta description')
-                ->translatable()
-                ->maxlength(200)
-         
-        ])
-);
-    return $form;
+    public function getSideFieldsets(TwillModelContract $model): Form
+    {
+        $form = parent::getSideFieldsets($model);
 
-}
-  /**
-     * @param Model $item
+        $form->addFieldset(
+            Fieldset::make()
+                ->title('SEO')
+                ->id('seo')
+                ->fields([
+                    Input::make()
+                        ->name('meta_title')
+                        ->label('Meta title')
+                        ->translatable()
+                        ->maxlength(200),
+                    Input::make()
+                        ->name('meta_description')
+                        ->label('Meta description')
+                        ->translatable()
+                        ->maxlength(200),
+                ])
+        );
+
+        return $form;
+    }
+
+    /**
+     * @param \A17\Twill\Models\Contracts\TwillModelContract $item
      * @return array
      */
     protected function previewData($item)

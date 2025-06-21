@@ -19,7 +19,7 @@ class ProfileController extends BaseModuleController
 
     protected $indexOptions = [
         'create' => false,
-        'delte' => false,
+        'delete' => false,
     ];
     /**
      * This method can be used to enable/disable defaults. See setUpController in the docs for available options.
