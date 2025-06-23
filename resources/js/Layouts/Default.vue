@@ -2,7 +2,7 @@
     <div class="relative min-h-screen">
    <div class="pb-10">
    <!-- Added z-20 to ensure header is above other content, including the main area and any fixed backgrounds -->
-     <header class=" sticky z-20 top-0 left-0 w-screen bg-(--color-primary-800) border-b border-(--color-accent-500) ">
+     <header class=" sticky z-20 top-0 left-0 w-screen bg-(--color-primary-500) border-b border-(--color-accent-500) ">
     <nav class="max-w-(--breakpoint-xl) flex flex-wrap items-center justify-between mx-auto p-4">
         <!-- Logo -->
         <NavLink href="/" class="flex items-center">
@@ -81,8 +81,8 @@
         <slot></slot>
      
     </main>
- <footer class="bg-(--color-primary-800) border-t border-(--color-accent) mt-auto absolute bottom-0 h-10">
- <div class=" lg:grid lg:grid-cols-8 bg-(--color-primary-800)">
+ <footer class="bg-(--color-primary-500) border-t border-(--color-accent) mt-auto absolute bottom-0 h-10">
+ <div class=" lg:grid lg:grid-cols-8 bg-(--color-primary-500)">
     <div class="relative ml-10 block lg:col-span-3">
         <img src="/assets/images/Z2sbZpbqstJ980jJ_NLMAF_LOGO_2shues_smallcropped.jpeg" 
              alt="No Limits Martial Arts and Fitness" 

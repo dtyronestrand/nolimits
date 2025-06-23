@@ -24,26 +24,25 @@ type PropsBlock = {
     }
 }
 
-
 defineProps<Props>();
 </script>
 <template>
   <div v-if="block.content.variant === 'default'" class="hero">
-  <img :src="block.medias.image.desktop.src">
+  <img :src="block.medias?.image?.desktop?.src">
   <div class="content">
   <h1 >{{ block.content?.heading || 'Default Heading'}}</h1>
   <p>{{ block.content?.details || 'Default details paragraph.' }}</p>
-  
+
             <IconButton
             v-if="block.content?.button_url && block.content?.button_text"
             :href="block.content.button_url"
             class="py-3 w-1/6 mx-auto mt-8 mb-4 bg-(--color-accent)  text-neutral-900 font-medium rounded-full hover:bg-transparent hover:border-(--color-accent-500) hover:text-(--color-text-primary) transition-colors"
           >
-             
+
             {{ block.content.button_text }}
           </IconButton>
-  
-    
+
+
           <Link href="/login" aria-label="" class="px-8   text-neutral-100 font-bold hover:text-(--color-accent-800) text-2xl transition-colors">Already started your journey? Login!</Link>
   </div>
   </div>
@@ -54,12 +53,12 @@ defineProps<Props>();
   <p v-html="block.content.text"></p>
   </div>
     <div class="right">
-    <img :src="block.medias.image?.desktop?.src || '/assets/images/default-banner-image.png'" alt="Banner Image">
+    <img :src="block.medias?.image?.desktop?.src || '/assets/images/default-banner-image.png'" alt="Banner Image">
   </div>
     </div>
   </div>
 
-    
+
 </template>
 <style scoped>
 @reference "../../../../../css/app.css";
@@ -70,11 +69,11 @@ defineProps<Props>();
   min-height: 50vh;
   margin-bottom: 10rem;
   margin-top: 5rem;
-    
+
 }
 .inner {
       display: grid;
-  grid-template-columns: 4fr 1fr 4fr; 
+  grid-template-columns: 4fr 1fr 4fr;
   grid-template-rows: 1fr 6fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
@@ -84,9 +83,9 @@ defineProps<Props>();
 }
 .left {
       grid-area: 1 / 1 / 3 / 3;
-  border: 10px solid #F1C50E;
+  border: 10px solid var(--color-accent);
   padding: 30px;
-  background-color: rgba(from var(--color-primary-800) R G B /0.8);
+  background-color: rgba(from var(--color-primary-500) R G B /0.8);
   backdrop-filter: blur(10px);
   @apply rounded-lg text-[var(--color-text-primary)];
   position: relative;
@@ -103,9 +102,9 @@ defineProps<Props>();
   font-size: 18px;
 }
 
-.right { 
+.right {
   grid-area: 2 / 2 / 4 / 4;
-  border: 10px solid #F1C50E;
+  border: 10px solid var(--color-accent);
   z-index: -1;
   position: relative;
 }
@@ -124,7 +123,7 @@ defineProps<Props>();
   top: 50%;
   height: 50%;
   width: 50vw;
-  background: #F1C50E;
+  background: var(--color-accent);
 }
 .left::before{
   left: 0;
@@ -132,11 +131,11 @@ defineProps<Props>();
 }
 .right::before{
   right: 0;
-  transform: translateY(-50%) translateX(100%); 
+  transform: translateY(-50%) translateX(100%);
 }
 
 @media screen and (max-width: 450px){
-  .banner .inner { 
+  .banner .inner {
     grid-template-rows: 6fr 1fr 6fr;
   }
   .left{
@@ -150,7 +149,7 @@ defineProps<Props>();
 	display: grid;
 	grid-template-areas: "hero";
 
-  
+
 }
 /* place all content into the 'hero' grid-area */
  .hero > * {grid-area: hero;}
@@ -165,7 +164,7 @@ defineProps<Props>();
 	align-self: center;
 	color: #fff;
 	text-align: center;
-    background-color: rgba(from var(--color-primary-800) R G B /0.7);
+    background-color: rgba(from var(--color-primary-500) R G B /0.7);
     backdrop-filter: blur(10px);
     @apply py-6 text-balance rounded-lg;
     width: 75%;

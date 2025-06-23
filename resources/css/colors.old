@@ -1,0 +1,83 @@
+/* 🔴 Primary - Ember Red */
+    --color-primary: var(--color-primary-500);
+    --color-primary-100: #f9e4e2;
+    --color-primary-200: #f2c1be;
+    --color-primary-300: #e89a93;
+    --color-primary-400: #dc6e63;
+    --color-primary-500: #c0392b;
+    --color-primary-600: #a93226;
+    --color-primary-700: #8b2820;
+    --color-primary-800: #6e1f1a;
+    --color-primary-900: #511511;
+
+    /* 🟠 Secondary - Flame Orange */
+    --color-secondary: var(--color-secondary-500);
+    --color-secondary-100: #fbe9dd;
+    --color-secondary-200: #f6c9a5;
+    --color-secondary-300: #f0a769;
+    --color-secondary-400: #ea8536;
+    --color-secondary-500: #e67e22;
+    --color-secondary-600: #cf6e1b;
+    --color-secondary-700: #b35914;
+    --color-secondary-800: #96450e;
+    --color-secondary-900: #783209;
+
+    /* 🟡 Accent - Phoenix Gold */
+    --color-accent: #f4d03f;
+    --color-accent-100: #fef9dc;
+    --color-accent-200: #fbef9f;
+    --color-accent-300: #f9e35b;
+    --color-accent-400: #f7d832;
+    --color-accent-500: #f4d03f;
+    --color-accent-600: #d4b635;
+    --color-accent-700: #b59d2c;
+    --color-accent-800: #978524;
+    --color-accent-900: #796c1b;
+
+    /* ⚫ Base/Surface - Charcoal Black */
+    --color-base-100: #d9d9d9;
+    --color-base-200: #b3b3b3;
+    --color-base-300: #8c8c8c;
+    --color-base-400: #666666;
+    --color-base-500: #121212;
+    --color-base-600: #0f0f0f;
+    --color-base-700: #0c0c0c;
+    --color-base-800: #090909;
+    --color-base-900: #060606;
+
+    /* ⚪ Neutral - Warm Gray */
+    --color-neutral-100: #f5f7f9;
+    --color-neutral-200: #e4e7eb;
+    --color-neutral-300: #d0d4d9;
+    --color-neutral-400: #bdc3c7;
+    --color-neutral-500: #95a5a6;
+    --color-neutral-600: #7f8c8d;
+    --color-neutral-700: #666f70;
+    --color-neutral-800: #4d5253;
+    --color-neutral-900: #343738;
+
+    /* ✅ Success - Verdant Green */
+    --color-success-100: #dff6ec;
+    --color-success-200: #b9ebd2;
+    --color-success-300: #8ddfba;
+    --color-success-400: #5cd29f;
+    --color-success-500: #27ae60;
+    --color-success-600: #219653;
+    --color-success-700: #1b7a45;
+    --color-success-800: #155e37;
+    --color-success-900: #0f4229;
+
+    /* ❌ Error - Deep Crimson */
+    --color-error-100: #f8e4e1;
+    --color-error-200: #eec1ba;
+    --color-error-300: #e09a90;
+    --color-error-400: #ce6d64;
+    --color-error-500: #922b21;
+    --color-error-600: #7e241c;
+    --color-error-700: #681e17;
+    --color-error-800: #531812;
+    --color-error-900: #3e120d;
+
+    --color-text-primary: #f5f7f9;
+    --color-text-inverse: var(--color-neutral-900);
+    --color-focus: #f4d03f;

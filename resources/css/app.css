@@ -66,89 +66,98 @@
   --card-top-offset: 2em;
   --numcards: 3;
   --outline-width: 0px;
-    /* 🔴 Primary - Ember Red */
-    --color-primary: var(--color-primary-500);
-    --color-primary-100: #f9e4e2;
-    --color-primary-200: #f2c1be;
-    --color-primary-300: #e89a93;
-    --color-primary-400: #dc6e63;
-    --color-primary-500: #c0392b;
-    --color-primary-600: #a93226;
-    --color-primary-700: #8b2820;
-    --color-primary-800: #6e1f1a;
-    --color-primary-900: #511511;
-  
-    /* 🟠 Secondary - Flame Orange */
-    --color-secondary: var(--color-secondary-500);
-    --color-secondary-100: #fbe9dd;
-    --color-secondary-200: #f6c9a5;
-    --color-secondary-300: #f0a769;
-    --color-secondary-400: #ea8536;
-    --color-secondary-500: #e67e22;
-    --color-secondary-600: #cf6e1b;
-    --color-secondary-700: #b35914;
-    --color-secondary-800: #96450e;
-    --color-secondary-900: #783209;
-  
-    /* 🟡 Accent - Phoenix Gold */
-    --color-accent: #f4d03f;
-    --color-accent-100: #fef9dc;
-    --color-accent-200: #fbef9f;
-    --color-accent-300: #f9e35b;
-    --color-accent-400: #f7d832;
-    --color-accent-500: #f4d03f;
-    --color-accent-600: #d4b635;
-    --color-accent-700: #b59d2c;
-    --color-accent-800: #978524;
-    --color-accent-900: #796c1b;
-  
-    /* ⚫ Base/Surface - Charcoal Black */
-    --color-base-100: #d9d9d9;
-    --color-base-200: #b3b3b3;
-    --color-base-300: #8c8c8c;
-    --color-base-400: #666666;
-    --color-base-500: #121212;
-    --color-base-600: #0f0f0f;
-    --color-base-700: #0c0c0c;
-    --color-base-800: #090909;
-    --color-base-900: #060606;
-  
-    /* ⚪ Neutral - Warm Gray */
-    --color-neutral-100: #f5f7f9;
-    --color-neutral-200: #e4e7eb;
-    --color-neutral-300: #d0d4d9;
-    --color-neutral-400: #bdc3c7;
-    --color-neutral-500: #95a5a6;
-    --color-neutral-600: #7f8c8d;
-    --color-neutral-700: #666f70;
-    --color-neutral-800: #4d5253;
-    --color-neutral-900: #343738;
-  
-    /* ✅ Success - Verdant Green */
-    --color-success-100: #dff6ec;
-    --color-success-200: #b9ebd2;
-    --color-success-300: #8ddfba;
-    --color-success-400: #5cd29f;
-    --color-success-500: #27ae60;
-    --color-success-600: #219653;
-    --color-success-700: #1b7a45;
-    --color-success-800: #155e37;
-    --color-success-900: #0f4229;
-  
-    /* ❌ Error - Deep Crimson */
-    --color-error-100: #f8e4e1;
-    --color-error-200: #eec1ba;
-    --color-error-300: #e09a90;
-    --color-error-400: #ce6d64;
-    --color-error-500: #922b21;
-    --color-error-600: #7e241c;
-    --color-error-700: #681e17;
-    --color-error-800: #531812;
-    --color-error-900: #3e120d;
 
-    --color-text-primary: #f5f7f9;
-    --color-text-inverse: var(--color-neutral-900);
-    --color-focus: #f4d03f;
+
+        /* --- Primary Color: Deep Midnight Blue --- */
+        /* Base: #1A2031 (500) */
+        --color-primary-100: #8D9BAE; /* Lighter tint */
+        --color-primary-200: #65748C;
+        --color-primary-300: #46556B;
+        --color-primary-400: #2C384E;
+        --color-primary-500: #1A2031; /* Your base color */
+        --color-primary-600: #141A27;
+        --color-primary-700: #0F131E;
+        --color-primary-800: #0A0D15;
+        --color-primary-900: #05060B; /* Darker shade */
+
+        /* --- Secondary Color: Rich Forest Green --- */
+        /* Base: #2E4D3E (500) */
+        --color-secondary-100: #93B8A5;
+        --color-secondary-200: #6B947E;
+        --color-secondary-300: #4B765E;
+        --color-secondary-400: #39614C;
+        --color-secondary-500: #2E4D3E; /* Your base color */
+        --color-secondary-600: #253F32;
+        --color-secondary-700: #1C3026;
+        --color-secondary-800: #13201A;
+        --color-secondary-900: #0B110F;
+
+        /* --- Accent Color: Burnished Gold --- */
+        /* Base: #B88B3D (500) */
+        --color-accent: #B88B3D;
+        --color-accent-100: #F9E1B7;
+        --color-accent-200: #ECCF9A;
+        --color-accent-300: #DEBF81;
+        --color-accent-400: #CBA55B;
+        --color-accent-500: #B88B3D; /* Your base color */
+        --color-accent-600: #936F31;
+        --color-accent-700: #6E5325;
+        --color-accent-800: #4A381B;
+        --color-accent-900: #261D0F;
+
+        /* --- Base/Surface Color: Deep Charcoal Gray --- */
+        /* Base: #292C33 (500) */
+        --color-base-100: #8F949F;
+        --color-base-200: #6C727D;
+        --color-base-300: #4C525C;
+        --color-base-400: #373C44;
+        --color-base-500: #292C33; /* Your base color */
+        --color-base-600: #21242A;
+        --color-base-700: #191B20;
+        --color-base-800: #111316;
+        --color-base-900: #090A0B;
+
+        /* --- Neutral Color: Warm Stone Gray --- */
+        /* Base: #8C8C8C (500) */
+        --color-neutral-100: #E6E6E6;
+        --color-neutral-200: #CCCCCC;
+        --color-neutral-300: #B3B3B3;
+        --color-neutral-400: #9F9F9F;
+        --color-neutral-500: #8C8C8C; /* Your base color */
+        --color-neutral-600: #707070;
+        --color-neutral-700: #555555;
+        --color-neutral-800: #3A3A3A;
+        --color-neutral-900: #1F1F1F;
+
+        /* --- Error State Color: Muted Brick Red --- */
+        /* Base: #9D4A4A (500) */
+        --color-error-100: #EBDADA;
+        --color-error-200: #D8B7B7;
+        --color-error-300: #C49696;
+        --color-error-400: #B07676;
+        --color-error-500: #9D4A4A; /* Your base color */
+        --color-error-600: #7D3B3B;
+        --color-error-700: #5E2C2C;
+        --color-800: #3E1D1D;
+        --color-900: #1F0E0E;
+
+        /* --- Success State Color: Resilient Sage Green --- */
+        /* Base: #5B8A6E (500) */
+        --color-success-100: #CBE6D5;
+        --color-success-200: #A8D1B9;
+        --color-success-300: #85BD9E;
+        --color-success-400: #6DAA8A;
+        --color-success-500: #5B8A6E; /* Your base color */
+        --color-success-600: #496F58;
+        --color-success-700: #375343;
+        --color-success-800: #26382E;
+        --color-success-900: #141D17;
+
+        /* --- Utility Colors (for text on dark background) --- */
+        --color-text-primary: #E0E4EB; /* A very light off-white */
+        --color-text-on-dark-secondary: #C3CAD4; /* A slightly darker light off-white */
+
+
   }
 
 
@@ -158,8 +167,8 @@ background-image: url('/assets/noise-texture.svg');
   background-size: cover;
   background-attachment: fixed;
 
-    
-  
+
+
  display:flex;
   flex-direction: column;
     min-height:100vh;
@@ -168,7 +177,7 @@ background-image: url('/assets/noise-texture.svg');
     overscroll-behavior-y: none;
   }
 
-  
+
   header{
     min-height: 50px;
   }

@@ -8,8 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProgramController;
 use Inertia\Inertia;
 
-Log::info('This is a test log from web.php using default channel.');
-Log::channel('daily')->info('This is a test log from web.php using DAILY channel.');
+
 
 Route::get('/', HomeController::class)->name('home');
 

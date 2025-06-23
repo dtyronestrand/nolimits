@@ -11,7 +11,6 @@ use A17\Twill\Services\Forms\Option;
 use A17\Twill\Services\Forms\Fields\Wysiwyg;
 use A17\Twill\Services\Forms\Fields\Medias;
 
-
 class Hero extends Base
 {
  

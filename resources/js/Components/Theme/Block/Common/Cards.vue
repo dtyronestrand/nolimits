@@ -64,7 +64,7 @@ const props = defineProps<Props>();
 </template>
 <style scoped>
 .profile {
-    background-color: rgba(from var(--color-primary-800) R G B / 0.7);
+    background-color: rgba(from var(--color-primary-500) R G B / 0.7);
     backdrop-filter: blur(10px);
 }
 </style>

@@ -13,7 +13,7 @@ class Navigation extends Model implements Sortable
     use HasTranslation, HasPosition, HasNesting;
 
     protected $fillable = [
-        'published',
+    
         'position',
         'url',
         'has_submenu',

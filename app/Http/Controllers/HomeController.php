@@ -21,7 +21,7 @@ class HomeController extends Controller
                 $item = Home::first();
 
                 if ($item !== null) {
-                    $item->load('translations', 'blocks');
+                    $item->load('translations','blocks');
                     $item->computeBlocks();
                 }
 
