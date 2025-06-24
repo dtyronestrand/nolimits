@@ -64,19 +64,19 @@ onUnmounted(() => {
 </script>
 <template>
     <section
-        class="fixed inset-0 top-30 -z-30 h-vh overflow-hidden rounded-sm bg-transparent"
+        class="fixed inset-0 top-20 -z-30 h-vh overflow-hidden rounded-sm bg-transparent"
         aria-hidden="true"
         > <!-- Added aria-hidden as it's decorative -->
         <!-- Iterate through each word to create a row -->
         <div
             v-for="(word, rowIndex) in words"
             :key="`row-${rowIndex}`"
-            class="word-row mb-8 flex items-center justify-center gap-4 text-surface-600 whitespace-nowrap"
+            class="word-row mb-8 flex items-center justify-center gap-4 text-[var(--color-base-400)] whitespace-nowrap"
             > <!-- Added whitespace-nowrap to prevent wrapping within the row -->
             <!-- Repeat the word and icon within the row -->
             <template v-for="wordIndex in Array.from({ length: numWordsPerRow }, (_, i) => i)" :key="`word-${rowIndex}-${wordIndex}`">
                 <span
-                    class="word-itself text-8xl font-extrabold tracking-tighter transition-colors duration-1000 ease-in-out"
+                    class="word-itself text-8xl font-extrabold tracking-tighter  transition-colors duration-1000 ease-in-out"
                     :style="{ color: getWordColor(rowIndex, wordIndex) }"
                     > <!-- Added transition classes -->
                     {{ word }}
@@ -84,7 +84,7 @@ onUnmounted(() => {
                 <!-- Show icon between words, but not after the last one -->
                 <span v-if="wordIndex < numWordsPerRow - 1" class="text-4xl text-center shrink-0"> <!-- Added shrink-0 to prevent icon shrinking -->
                     <!-- Use a more descriptive name if possible, or ensure 'mingcute:fire-fill' is available -->
-                    <Icon class="text-primary-500 "icon="mingcute:fire-fill" />
+                    <Icon class="text-[var(--color-primary-100)]"icon="mingcute:fire-fill" />
                 </span>
             </template>
         </div>

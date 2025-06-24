@@ -12,7 +12,8 @@ return new class extends Migration
             // this will create an id, a "published" column, and soft delete and timestamps columns
             createDefaultTableFields($table);
 
-         $table->string('first_name', 100)->nullable();
+            $table->string('name', 200)->nullable();
+            $table->string('first_name', 100)->nullable();
             $table->string('last_name', 100)->nullable();
             $table->text('bio')->nullable();
             $table->string('email', 150)->nullable();

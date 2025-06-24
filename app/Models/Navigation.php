@@ -25,7 +25,7 @@ class Navigation extends Model implements Sortable
 
     public $translatedAttributes = [
         'title',
-        'description',
+     
     ];
     
 }

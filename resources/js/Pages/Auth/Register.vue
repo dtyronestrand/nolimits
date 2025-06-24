@@ -2,7 +2,7 @@
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-
+import Auth from '@/Layouts/Auth.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -27,6 +27,7 @@ const submit = () => {
 
 <template>
     <Head title="Register" />
+    <Auth>
     <InteractiveGridPattern  :class="'[mask-image:radial-gradient(750px_circle_at_center,white,transparent)] '"
       :width="40"
       :height="40"
@@ -119,7 +120,7 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-[var(--color-neutral-100)] hover:text-[var(--color-accent)] rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-i[var(--color-accent)]">
+                <Link :href="route('login')" class="underline text-sm text-[var(--color-text-primary] hover:text-[var(--color-accent)] rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-i[var(--color-accent)]">
                     Already registered?
                 </Link>
 
@@ -129,6 +130,7 @@ const submit = () => {
             </div>
         </form>
     </AuthenticationCard>
+    </Auth>
     
 
 

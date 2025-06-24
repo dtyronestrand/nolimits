@@ -15,7 +15,8 @@ const props = defineProps({
 
 const form = useForm({
     _method: 'PUT',
-    name: props.user.name,
+    first_name: props.user.first_name,
+    last_name: props.user.last_name,
     email: props.user.email,
     photo: null,
 });
@@ -78,11 +79,15 @@ const clearPhotoFileInput = () => {
 <template>
     <FormSection @submitted="updateProfileInformation">
         <template #title>
+            <span class="text-[var(--color-text-primary)]">
             Profile Information
+            </span>
         </template>
 
-        <template #description>
+        <template class=#description>
+            <span class="text-[var(--color-text-primary)]">
             Update your account's profile information and email address.
+            </span>
         </template>
 
         <template #form>
@@ -130,10 +135,10 @@ const clearPhotoFileInput = () => {
 
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="first_name" value="First Name" />
                 <TextInput
-                    id="name"
-                    v-model="form.name"
+                    id="first_name"
+                    v-model="form.first_name"
                     type="text"
                     class="mt-1 block w-full"
                     required
@@ -141,7 +146,18 @@ const clearPhotoFileInput = () => {
                 />
                 <InputError :message="form.errors.name" class="mt-2" />
             </div>
-
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="last_name" value="Last Name" />
+                <TextInput
+                    id="last_name"
+                    v-model="form.last_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="family-name"
+                />
+                <InputError :message="form.errors.last_name" class="mt-2" />
+            </div>
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="email" value="Email" />

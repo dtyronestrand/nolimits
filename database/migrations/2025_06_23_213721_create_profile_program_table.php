@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-           Schema::create('program_revisions', function (Blueprint $table) {
-            createDefaultRevisionsTableFields($table, 'program');
+        Schema::create('profile_program', function (Blueprint $table) {
+     createDefaultRelationshipTableFields($table, 'profile', 'program');
+       $table->integer('position')->unsigned()->index();
         });
     }
 
@@ -21,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('program_profile');
     }
 };

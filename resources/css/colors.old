@@ -28,7 +28,7 @@
     --color-accent-200: #fbef9f;
     --color-accent-300: #f9e35b;
     --color-accent-400: #f7d832;
-    --color-accent-500: #f4d03f;
+    --color-tertiary-500: #f4d03f;
     --color-accent-600: #d4b635;
     --color-accent-700: #b59d2c;
     --color-accent-800: #978524;

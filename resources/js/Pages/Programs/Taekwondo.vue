@@ -5,4 +5,3 @@ import Default from '../../Layouts/Default.vue'
 </script>
 <template>
 <Head title="Taekwondo" description="Taekwondo program details" />
-<Default>

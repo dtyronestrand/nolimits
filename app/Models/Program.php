@@ -9,50 +9,53 @@ use A17\Twill\Models\Behaviors\HasMedias;
 use A17\Twill\Models\Behaviors\HasRevisions;
 use A17\Twill\Models\Behaviors\HasPosition;
 use A17\Twill\Models\Behaviors\HasNesting;
+use A17\Twill\Models\Behaviors\HasRelated;
 use A17\Twill\Models\Behaviors\Sortable;
 use App\Models\Base\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Program extends Model implements Sortable
 {
-    use HasBlocks, HasTranslation, HasSlug, HasMedias, HasRevisions, HasPosition, HasNesting;
+    use HasBlocks, HasTranslation, HasSlug, HasMedias, HasRevisions, HasRelated, HasPosition, HasNesting;
 
     protected $fillable = [
         'published',
         'title',
-       'tagline',
-        'meta_title',
-        'meta_description',
+        'tagline',
         'position',
     ];
     
-protected $translatable =[
+    public $translatedAttributes = [
         'title',
         'tagline',
-        'meta_title',
-        'meta_description',
-        'active',
+    ];
+    
+    public $slugAttributes = [
+        'title',
     ];
     
     public array $publicAttributes = [
         'title',
         'tagline',
-        'meta_title',
-        'meta_description',
         'blocks',
-        'position',
-    ];
-    
-    
-    public $slugAttributes = [
-        'title',
+        'medias',
     ];
 
-    public function profiles(): BelongsToMany
+    protected static function boot()
     {
-        return $this->belongsToMany(Profile::class, 'profile_program')
-            ->withPivot('date_enrolled', 'active', 'details')
-            ->withTimestamps();
+        parent::boot();
+
+        // Ensure all translatedAttributes are strings when the model is retrieved
+        static::retrieved(function ($model) {
+            if (property_exists($model, 'translatedAttributes') && is_array($model->translatedAttributes)) {
+                $model->translatedAttributes = array_filter($model->translatedAttributes, function ($attribute) {
+                    return is_string($attribute);
+                });
+            }
+        });
     }
-    
+
+    public function profiles()
+    {
+        return $this->belongsToMany(Profile::class)->orderBy('position');
+    }
 }

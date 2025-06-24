@@ -32,12 +32,7 @@ class ProgramController extends Controller
     {
         // Check for Taekwondo slug and user tkd attribute
                   
-            if ($slug === 'taekwondo') {
-            $user = Auth::user();
-            if ($user && $user->tkd === true) {
-           redirect()->route('programs.taekwondo.members');
-            }
-        }
+      
 
         // Get the current locale
         $locale = App::getLocale();

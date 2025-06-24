@@ -285,6 +285,7 @@ svg {
   height: 100%;
   transition: opacity 0.3s;
   will-change: opacity;
+  overflow: hidden;
   opacity: 0;
 }
 .slider-control.inactive:hover {

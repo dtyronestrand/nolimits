@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -28,6 +29,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -51,6 +54,8 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+       
+
     ];
 
     /**
@@ -69,5 +74,18 @@ class User extends Authenticatable
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($user){
+            $profile = Profile::make();
+            $profile->name = $user->name;
+            $profile->user_id = $user->id;
+            $profile->first_name = $user->first_name;
+            $profile->last_name = $user->last_name;
+            $profile->email = $user->email;
+            $profile->save();
+        });
     }
 }

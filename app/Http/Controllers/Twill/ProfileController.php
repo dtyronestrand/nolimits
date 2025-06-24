@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Twill;
 
 use A17\Twill\Models\Contracts\TwillModelContract;
-use A17\Twill\Services\Listings\Columns\Text;
-use A17\Twill\Services\Listings\TableColumns;
+
 use A17\Twill\Services\Forms\Fields\Input;
+use A17\Twill\Services\Forms\Fields\MultiSelect;
+use A17\Twill\Services\Forms\Options;
 use A17\Twill\Services\Forms\Form;
 use A17\Twill\Services\Forms\InlineRepeater;
 use A17\Twill\Services\Forms\Fields\Browser;
 use App\Models\Program;
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
+use A17\Twill\Services\Forms\Option;
 
 class ProfileController extends BaseModuleController
 {
@@ -28,43 +30,39 @@ class ProfileController extends BaseModuleController
     {
     }
 
-    /**
-     * See the table builder docs for more information. If you remove this method you can use the blade files.
-     * When using twill:module:make you can specify --bladeForm to use a blade form instead.
-     */
     public function getForm(TwillModelContract $model): Form
     {
         $form = parent::getForm($model);
-
+ 
         $form->add(
-            Input::make()->name('description')->label('Description')->translatable()
+            Input::make()->name('first_name')->label('First Name')
         );
-
         $form->add(
-            InlineRepeater::make()
-            ->name('programs')
-            ->label('Programs')
-            ->triggerText('Add Program')
-            ->fields([
-                Browser::make()
-                ->modules([Program::class])
-                ->name('program')
-           ] )
-            );
+            Input::make()->name('last_name')->label('Last Name')
+        );
+        $form->add(
+            Input::make()->name('email')->label('Email')->readOnly(true)
+        );
+        
+        $form->add(
+        
+                    MultiSelect::make()
+                    ->name('programs')
+                        ->inline()
+                        ->options(
+                            Options::make(
+                                Program::all()->map(function($program) {
+                                    return Option::make($program->id, (string) $program->title);
+                                })->toArray()
+                            )
+                            )
+                            );
+
         return $form;
     }
 
     /**
      * This is an example and can be removed if no modifications are needed to the table.
      */
-    protected function additionalIndexTableColumns(): TableColumns
-    {
-        $table = parent::additionalIndexTableColumns();
 
-        $table->add(
-            Text::make()->field('description')->title('Description')
-        );
-
-        return $table;
-    }
 }

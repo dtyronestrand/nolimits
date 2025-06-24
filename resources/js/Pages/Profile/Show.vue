@@ -6,7 +6,7 @@ import SectionBorder from '@/Components/SectionBorder.vue';
 import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
 import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
-
+import Default from '@/Layouts/Default.vue';
 defineProps({
     confirmsTwoFactorAuthentication: Boolean,
     sessions: Array,
@@ -14,9 +14,9 @@ defineProps({
 </script>
 
 <template>
-    <AppLayout title="Profile">
+    <Default title="Profile">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-[var(--color-text-primary)] leading-tight">
                 Profile
             </h2>
         </template>
@@ -53,5 +53,5 @@ defineProps({
                 </template>
             </div>
         </div>
-    </AppLayout>
+    </Default>
 </template>
