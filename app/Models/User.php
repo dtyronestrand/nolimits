@@ -87,5 +87,16 @@ class User extends Authenticatable
             $profile->email = $user->email;
             $profile->save();
         });
+
+        static::updated(function($user){
+            $profile = $user->profile;
+            if ($profile) {
+                $profile->name = $user->name;
+                $profile->first_name = $user->first_name;
+                $profile->last_name = $user->last_name;
+                $profile->email = $user->email;
+                $profile->save();
+            }
+        });
     }
 }

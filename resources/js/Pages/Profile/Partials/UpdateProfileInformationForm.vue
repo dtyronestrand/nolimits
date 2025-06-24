@@ -142,9 +142,9 @@ const clearPhotoFileInput = () => {
                     type="text"
                     class="mt-1 block w-full"
                     required
-                    autocomplete="name"
+                    autocomplete="given-name"
                 />
-                <InputError :message="form.errors.name" class="mt-2" />
+                <InputError :message="form.errors.first_name" class="mt-2" />
             </div>
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="last_name" value="Last Name" />
