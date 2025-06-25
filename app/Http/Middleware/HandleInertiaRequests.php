@@ -37,8 +37,16 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-          'navigations' => \App\Models\Navigation::published()->get()
-  
+            'auth' => [
+                'user' => function () use ($request) {
+                    if (! $request->user()) {
+                        return null;
+                    }
+
+                    return $request->user()->load('profile.programs');
+                },
+            ],
+            'navigations' => \App\Models\Navigation::published()->get(),
         ];
     }
 }

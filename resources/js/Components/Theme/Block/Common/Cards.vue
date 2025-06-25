@@ -30,7 +30,7 @@ type PropsChildBlock = {
 const props = defineProps<Props>();
 </script>
 <template>
-    <div>
+    <div v-if="block.content.type === 'profile'">
                <h1 v-if="block.content?.heading" class="text-7xl font-bold text-center text-(--color-text-primary) mb-10">{{ block.content.heading }}</h1>
         <div class="flex  flex-col md;flex-row justify-evenly gap-8 items-center "> <!-- Assuming this container was intended -->
  
@@ -60,6 +60,9 @@ const props = defineProps<Props>();
                  <p>No cards to display.</p>
             </div>
         </div>
+    </div>
+    <div v-else-if="block.content.type === 'scroll'">
+    <
     </div>
 </template>
 <style scoped>
