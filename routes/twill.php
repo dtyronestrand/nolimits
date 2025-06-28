@@ -12,4 +12,3 @@ TwillRoutes::module('pages');
 TwillRoutes::module('programs');
 TwillRoutes::module('profiles');
 TwillRoutes::module('programs');
-TwillRoutes::module('belts');
