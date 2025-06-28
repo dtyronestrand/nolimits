@@ -42,7 +42,7 @@
                     </div>
 
                     <!-- Mobile Menu Hamburger Button -->
-                   <button
+                    <button
                         type="button"
                         @click="toggleMobileMenu"
                         class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-md md:hidden hover:bg-gray-100 focus:outline-hidden focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -78,7 +78,7 @@
                         </svg>
                     </button>
                     <!-- The md:hidden hamburger button was here, it's removed as it seems redundant -->
- 
+
                     <!-- Collapsible Menu Links -->
                     <div
                         id="main-menu-content"

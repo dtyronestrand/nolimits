@@ -40,6 +40,20 @@ class Program extends Model implements Sortable
         'medias',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Ensure all translatedAttributes are strings when the model is retrieved
+        static::retrieved(function ($model) {
+            if (property_exists($model, 'translatedAttributes') && is_array($model->translatedAttributes)) {
+                $model->translatedAttributes = array_filter($model->translatedAttributes, function ($attribute) {
+                    return is_string($attribute);
+                });
+            }
+        });
+    }
+
     public function profiles()
     {
         return $this->belongsToMany(Profile::class)->orderBy('position');
