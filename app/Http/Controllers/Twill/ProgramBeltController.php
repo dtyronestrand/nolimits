@@ -8,6 +8,7 @@ use A17\Twill\Services\Listings\TableColumns;
 use A17\Twill\Services\Breadcrumbs\NestedBreadcrumbs;
 use A17\Twill\Services\Forms\Fields\Color;
 use A17\Twill\Services\Forms\Fields\Select;
+use A17\Twill\Services\Forms\Fields\BlockEditor;
 use A17\Twill\Services\Forms\Options;
 use A17\Twill\Services\Forms\Form;
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
@@ -61,7 +62,12 @@ class ProgramBeltController extends BaseModuleController
                         Option::make('black', 'Black'),
                     ])
                 )
+                    )
+                    ->add(
+                        BlockEditor::make()
+                        ->blocks(['common-requirements'])
                     );
+                    
 
         return $form;
     }
