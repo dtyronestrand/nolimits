@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Twill;
 use A17\Twill\Models\Contracts\TwillModelContract;
 
 use A17\Twill\Services\Forms\Fields\Input;
-use A17\Twill\Services\Forms\Fields\MultiSelect;
+use A17\Twill\Services\Forms\Fields\Checkbox;;
 use A17\Twill\Services\Forms\Options;
 use A17\Twill\Services\Forms\Form;
 use A17\Twill\Services\Forms\InlineRepeater;
@@ -44,19 +44,11 @@ class ProfileController extends BaseModuleController
             Input::make()->name('email')->label('Email')->readOnly(true)
         );
         
-        $form->add(
-        
-                    MultiSelect::make()
-                    ->name('programs')
-                        ->inline()
-                        ->options(
-                            Options::make(
-                                Program::all()->map(function($program) {
-                                    return Option::make($program->id, (string) $program->title);
-                                })->toArray()
-                            )
-                            )
-                            );
+        foreach (Program::all() as $program) {
+            $form->add(
+                Checkbox::make()->name('programs_' . $program->id)->label($program->title)
+            );
+        }
 
         return $form;
     }

@@ -44,4 +44,9 @@ class Program extends Model implements Sortable
     {
         return $this->belongsToMany(Profile::class)->orderBy('position');
     }
+
+    public function belts()
+    {
+        return $this->hasMany(ProgramBelt::class);
+    }
 }

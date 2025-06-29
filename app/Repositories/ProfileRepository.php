@@ -19,15 +19,32 @@ class ProfileRepository extends ModuleRepository
     {
         $this->model = $model;
     }
-  public function afterSave(TwillModelContract $model, array $fields): void
+    public function getFormFields(TwillModelContract $model): array
+    {
+        $fields = parent::getFormFields($model);
+        
+        // Set checkbox values based on existing program relationships
+        $selectedPrograms = $model->programs->pluck('id')->toArray();
+        foreach (\App\Models\Program::all() as $program) {
+            $fields['programs_' . $program->id] = in_array($program->id, $selectedPrograms);
+        }
+        
+        return $fields;
+    }
+
+    public function afterSave(TwillModelContract $model, array $fields): void
     {
         $programsToSync = [];
-        if (isset($fields['programs'])) {
-            foreach ($fields['programs'] as $index => $programId) {
-                // Assign a position based on the order they appear in the multiselect field
-                $programsToSync[$programId] = ['position' => $index + 1];
+        $position = 1;
+        
+        // Check each checkbox field and collect selected programs
+        foreach (\App\Models\Program::all() as $program) {
+            $checkboxName = 'programs_' . $program->id;
+            if (isset($fields[$checkboxName]) && $fields[$checkboxName]) {
+                $programsToSync[$program->id] = ['position' => $position++];
             }
         }
+        
         $model->programs()->sync($programsToSync);
         parent::afterSave($model, $fields);
     }

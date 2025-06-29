@@ -57,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
                 'page' => 'App\Models\Page',
                 'program' => 'App\Models\Program',
                 'profile' => 'App\Models\Profile',
+                'programBelt' => 'App\Models\ProgramBelt',
           
             ]);
     }
