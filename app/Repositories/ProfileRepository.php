@@ -28,7 +28,10 @@ class ProfileRepository extends ModuleRepository
         foreach (\App\Models\Program::all() as $program) {
             $fields['programs_' . $program->id] = in_array($program->id, $selectedPrograms);
         }
-        
+        $currentBelt = $model->programs->pluck('belt')->toArray();
+        foreach(\App\Models\ProgramBelt::all() as $belt){
+            $fields['belts_' . $belt->id] = in_array($belt->id, $currentBelt);
+        }
         return $fields;
     }
 
@@ -36,7 +39,7 @@ class ProfileRepository extends ModuleRepository
     {
         $programsToSync = [];
         $position = 1;
-        
+        $selected = [];
         // Check each checkbox field and collect selected programs
         foreach (\App\Models\Program::all() as $program) {
             $checkboxName = 'programs_' . $program->id;
@@ -44,7 +47,10 @@ class ProfileRepository extends ModuleRepository
                 $programsToSync[$program->id] = ['position' => $position++];
             }
         }
-        
+       
+        if (isset($fields['current_belt'])) {
+            $model->update(['current_belt' => $fields['current_belt']]);
+        }
         $model->programs()->sync($programsToSync);
         parent::afterSave($model, $fields);
     }

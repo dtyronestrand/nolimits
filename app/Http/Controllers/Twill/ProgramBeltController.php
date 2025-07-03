@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Twill;
 
 use A17\Twill\Models\Contracts\TwillModelContract;
 use A17\Twill\Services\Listings\Columns\Text;
+
 use A17\Twill\Services\Listings\TableColumns;
 use A17\Twill\Services\Breadcrumbs\NestedBreadcrumbs;
 use A17\Twill\Services\Forms\Fields\Color;
+use A17\Twill\Services\Forms\Fields\Input;
+use A17\Twill\Services\Forms\InlineRepeater;
 use A17\Twill\Services\Forms\Fields\Select;
-use A17\Twill\Services\Forms\Fields\BlockEditor;
+use A17\Twill\Services\Forms\Fields\Checkbox;
 use A17\Twill\Services\Forms\Options;
 use A17\Twill\Services\Forms\Form;
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
@@ -49,6 +52,7 @@ class ProgramBeltController extends BaseModuleController
         $form->add(
             Color::make()->name('color')->label('Color')
         )
+
         ->add(
             Select::make()
                 ->name('category')
@@ -64,25 +68,43 @@ class ProgramBeltController extends BaseModuleController
                 )
                     )
                     ->add(
-                        BlockEditor::make()
-                        ->blocks(['common-requirements'])
-                    );
-                    
-
+                       InlineRepeater::make()
+                        ->name('requirements')
+                        ->label('Requirements')
+                        ->fields([
+                              Select::make()
+                ->name('requirement_type')
+                ->label('Requirement Type')
+                ->options(
+                    Options::make([
+                        Option::make('poomsae', 'Poomsae'),
+                        Option::make('sparring_self-defense', 'Sparring / Self-Defense'),
+                        Option::make('breaking', 'Breaking'),
+                        Option::make('knowledge', 'Knowledge'),
+                        Option::make('other', 'Other'),
+                    ])
+                    ),
+                    Input::make()
+                    ->name('requirement_name')
+                    ->label('Requirement Name'),
+                    Select::make()
+                    ->name('completed')
+                    ->label('Completed')
+                    ->options(
+                        Options::make([
+                            Option::make(0, 'No'),
+                            Option::make(1, 'Yes'),
+                        ])
+                    )
+                  
+        ])
+             
+                );
         return $form;
     }
 
     /**
      * This is an example and can be removed if no modifications are needed to the table.
      */
-    protected function additionalIndexTableColumns(): TableColumns
-    {
-        $table = parent::additionalIndexTableColumns();
 
-        $table->add(
-            Text::make()->field('description')->title('Description')
-        );
-
-        return $table;
-    }
 }

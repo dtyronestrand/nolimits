@@ -1,7 +1,129 @@
 <template>
         <Head :item="item"></Head>
+              
         <div v-if="$page.props.auth.user !== null && tkdMember" class="flex w-full h-screen">
-                <main></main>
+        <div class="grid-background"><div class="background-grid">
+        </div>
+        <Default>
+                <div class="app max-w-[90vw] max-h-[860px] h-[90vh] mx-auto pb-10 flex flex-col overflow-hidden relative w-full rounded-[14px] backdrop-blur-[20px] ">
+                <div class="flex grow-1 overflow-hidden ">
+                <div class="basis-[240px] border-r-1 border-[var(--color-accent)] p-[26px] overflow-auto shrink-0 max-[945px]:hidden">
+                 <div class="mt-[20px]  flex flex-col justify-center title rounded-2xl w-full ">
+                 <div class="mb-[14px] text-center p-5">No Limits Martial Arts and Fitness</div>
+   <img class="w-[75px] h-[75px] rounded-[50%] object-cover  border-2 border-[var(--color-accent)] ml-[22px]" src="page.props.auth.user.profile_photo_url" alt="page.props.auth.user.name">
+   <div class="mt-12 ">
+   <a href="/programs/taekwondo/videos" >Videos</a>
+   
+   </div>
+                </div>
+                                 </div>
+                                    <div class=" w-full mt-5 grid grid-rows-4 grid-cols-4 " >
+                                    <div class="ml-5 mr-2 text-4xl title col-span-2 p-5 rounded-2xl" >
+                                    <h1 >Taekwondo</h1>
+                                      <h2 class="text-2xl">{{ page.props.auth.user.profile.name }}</h2>
+                                    </div>
+ <div class="col-span-1 row-span-1 p-5 mr-2 rounded-2xl title">
+   <h2 class="text-center mb-2 text-2xl">Current Belt </h2>
+   <p class="text-lg leading-tight text-center">{{ page.props.auth.user.profile.current_belt_data.name }}</p>
+</div>
+ <div class="col-span-1 row-span-1 mr-5  p-5 rounded-2xl title">
+   <h2 class="text-center mb-2 text-2xl">Next Belt</h2>
+   <p class="text-lg text-center leading-tight">
+{{ nextBelt }}
+   </p>
+</div>
+   <div class="  col-span-1  ml-5 mt-2 p-5 rounded-2xl title ">
+   <h2 class="text-center mb-2 text-2xl">School Motto</h2>
+   <p class="text-lg leading-tight">Train with integrity, humility and heart. 
+</p>
+   </div>
+<div class="col-span-3 mr-5 row-span-3 ml-2 mt-2 p-5 grid grid-cols-4 grid-rows-4 rounded-2xl title">
+ <h2 class="col-span-4 row-span-1 mt-4 text-2xl">Requirements</h2>
+
+<div class=" col-span-1 row-span-2 align-center ">
+ <h3 v-if="poomsae && poomsae.length > 0" class="font-bold mt-8 mb-4 text-lg">Poomsae:</h3>
+ <div v-for="item in poomsae" :key="item.id" >
+ <Input type="checkbox" v-model="item.completed" /> <span class="ml-2 text-balance ">{{ item.requirement_name }}</span>
+ </div>
+</div>
+<div class=" flex flex-col  row-span-2 align-center px-4 overflow-auto">
+ <h3 v-if="ssd && ssd.length > 0" class="font-bold mb-4 mt-8 text-lg">Sparring/Self-Defense:</h3>
+    <div v-for="item in ssd" :key="item.id" >
+    <Input type="checkbox" v-model="item.completed" /> <span class="ml-2">{{ item.requirement_name }}</span>
+    </div>
+</div>
+<div class=" flex flex-col row-span-2 align-center px-10 ">
+    <h3 v-if="breaking && breaking.length > 0" class="font-bold  mb-4 mt-8 text-lg">Breaking:</h3>
+    <div v-for="item in breaking" :key="item.id" >
+    <Input type="checkbox" v-model="item.completed" /> <span class="ml-2">{{ item.requirement_name }}</span>
+    </div>  
+</div>
+<div class=" flex flex-col row-span-2 align-center ">
+    <h3 v-if="knowledge && knowledge.length > 0" class="font-bold mb-4 mt-8  text-lg">Knowledge:</h3>
+    <div v-for="item in knowledge" :key="item.id">
+    <Input type="checkbox" v-model="item.completed" /> <span class="ml-2">{{ item.requirement_name }}</span>
+    </div>
+</div>
+<div class=" flex flex-col row-span-2 align-center ">
+    <h3 v-if="other && other.length > 0" class="font-bold mb-4 mt-8 flex justify-center align-center text-lg">Other:</h3>
+    <div v-for="item in other" :key="item.id" >
+    <Input type="checkbox" v-model="item.completed" /> <span class="ml-2">{{ item.requirement_name }}</span>
+    </div>  
+    </div>
+<div class="grid grid-cols-2 col-span-4 grid-rows-4 grid-flow-row">
+   <h3 class="text-lg font-bold mb-2 col-span-4 row-span-1">Progress to Next Belt</h3>
+   <div class="w-full bg-gray-200 col-span-4 row-span-2 rounded-full h-6 mb-4 relative">
+     <div class="bg-[var(--color-accent)] h-6 rounded-full transition-all duration-300 flex items-center justify-center text-xs text-white font-medium" :style="{ width: progressPercentage + '%' }">
+       <span v-if="progressPercentage > 20">{{ completedRequirements }}/{{ allRequirements.length }} ({{ progressPercentage }}%)</span>
+     </div>
+     <div v-if="progressPercentage <= 20" class="absolute inset-0 flex items-center justify-center text-xs text-gray-600">
+       {{ completedRequirements }}/{{ allRequirements.length }} ({{ progressPercentage }}%)
+     </div>
+   </div>
+  <div class="col-span-1 row-span-1">
+   <a 
+     :href="canApplyToTest ? '/testing-app' : '#'"
+     :class="[
+       'px-6 py-2 rounded-lg text-white font-medium transition-all',
+       canApplyToTest ? 'bg-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] cursor-pointer' : 'bg-gray-400 cursor-not-allowed'
+     ]"
+     :disabled="!canApplyToTest"
+   >
+     Apply to Test
+   </a>
+  </div>
+ </div>
+
+
+ </div>
+
+ 
+ <!-- Progress Bar and Test Button -->
+ 
+
+
+ 
+
+
+
+
+
+   <div class="col-span-1 row-span-3 ml-5 mt-2 p-5 rounded-2xl title">
+   <h2 class="text-center mb-2 text-2xl">Student Oath</h2>
+   <p class="text-lg leading-tight text-balance ">		
+I will come to each class with an open mind and loving spirit.
+I will honor martial arts tradition, unaffected by the expectations of others.
+I will set goals and work hard to achieve them.
+My only limitation is myself.
+</p>
+ </div>
+ 
+   </div>
+   </div>
+ </div>
+               
+        </Default>
+        </div>
         </div>
 <div v-else><Default>
     <h1 >
@@ -150,16 +272,75 @@ import {usePage} from "@inertiajs/vue3";
 interface Props {
     item: Model.Page
 }
+const belts = [
+    {id: 1, name: 'No Belt'},
+    {id: 2, name: 'White'},
+    {id: 3, name: 'Yellow'},
+    {id: 4, name: 'Orange'},
+    {id: 5, name: 'Green'},
+    {id: 6, name: 'Blue'},
+    {id: 7, name: 'Purple'},
+    {id: 8, name: 'Brown'},
+    {id: 9, name: 'Red'},
+    {id: 10, name: 'Red / Black stripe'},
+    {id: 11, name: 'Black'},
+]
 
 const props = defineProps<Props>();
-
+const page = usePage();
 const tkdMember = computed(()=>{
-    if ($page.props.auth.user.profile.programs.map((program)=>program.title).includes('Taekwondo')) {
+    if (page.props.auth.user.profile.programs.map((program)=>program.title).includes('Taekwondo')) {
         return true;
     } else {
         return false;
     }
 })
+const nextBelt = computed(() => {
+    const currentPosition = page.props.auth.user.profile.current_belt_data?.position;
+    if (!currentPosition) return 'No Next Belt';
+    
+    const next = belts.find(belt => belt.id === currentPosition + 1);
+    console.log('Next Belt:', next.name);
+    return next ? next.name : 'No Next Belt';
+});
+const poomsae = computed(() => {
+    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'poomsae') || [];
+});
+
+const ssd = computed(() => {
+    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'sparring_self-defense') || [];
+});
+
+const breaking = computed(() => {
+    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'breaking') || [];
+});
+
+const knowledge = computed(() => {
+    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'knowledge') || [];
+});
+
+const other = computed(() => {
+    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'other') || [];
+});
+
+const allRequirements = computed(() => {
+    return [...poomsae.value, ...ssd.value, ...breaking.value, ...knowledge.value, ...other.value];
+});
+
+const completedRequirements = computed(() => {
+    return allRequirements.value.filter(req => req.completed).length;
+});
+
+const progressPercentage = computed(() => {
+    const total = allRequirements.value.length;
+    return total > 0 ? Math.round((completedRequirements.value / total) * 100) : 0;
+});
+
+const canApplyToTest = computed(() => {
+    return progressPercentage.value === 100;
+});
+
+
 const words = "What Can Taekwondo Do For You?";
 const headlines = [
     {
@@ -439,4 +620,29 @@ figure {
     color: var(--color-text-primary);
     margin-bottom: 2rem;
 }
+.app{
+    background-color: rgba(from var(--color-primary-900) R G B / 0.3);
+    backdrop-filter: blur(20px) saturate(150%);
+}
+
+.title{
+    background-color: rgba(from var(--color-primary-500) R G B / 0.2);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.grid-background {
+    height: 125%;
+    background: radial-gradient(ellipse at bottom, #5091DD 0%, #030617 100%);
+    position: relative;
+}
+
+.background-grid {
+    width: 100%;
+    height: 1px;
+    box-shadow: 0px 0px #030617, 0px 0px #030617, 0px 3px #030617, 0px 6px #030617, 0px 9px #030617, 0px 12px #030617, 0px 15px #030617, 0px 18px #030617, 0px 21px #030617, 0px 24px #030617, 0px 27px #030617, 0px 30px #030617, 0px 33px #030617, 0px 36px #030617, 0px 39px #030617, 0px 42px #030617, 0px 45px #030617, 0px 48px #030617, 0px 51px #030617, 0px 54px #030617, 0px 57px #030617, 0px 60px #030617, 0px 63px #030617, 0px 66px #030617, 0px 69px #030617, 0px 72px #030617, 0px 75px #030617, 0px 78px #030617, 0px 81px #030617, 0px 84px #030617, 0px 87px #030617, 0px 90px #030617, 0px 93px #030617, 0px 96px #030617, 0px 99px #030617;
+}
+
+
+
 </style>

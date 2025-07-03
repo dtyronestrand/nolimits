@@ -22,6 +22,8 @@ class Program extends Model implements Sortable
         'title',
         'tagline',
         'position',
+       
+    
     ];
     
     public $translatedAttributes = [
@@ -45,6 +47,11 @@ class Program extends Model implements Sortable
         return $this->belongsToMany(Profile::class)->orderBy('position');
     }
 
+    public function programBelts()
+    {
+        return $this->hasMany(ProgramBelt::class);
+    }
+    
     public function belts()
     {
         return $this->hasMany(ProgramBelt::class);

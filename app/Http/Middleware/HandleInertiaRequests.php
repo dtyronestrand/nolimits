@@ -43,7 +43,13 @@ class HandleInertiaRequests extends Middleware
                         return null;
                     }
 
-                    return $request->user()->load('profile.programs');
+                    $user = $request->user()->load('profile.programs.programBelts');
+                    
+                    if ($user->profile && $user->profile->current_belt) {
+                        $user->profile->current_belt_data = \App\Models\ProgramBelt::select('*')->find($user->profile->current_belt);
+                    }
+                    
+                    return $user;
                 },
             ],
             'navigations' => \App\Models\Navigation::published()->get(),

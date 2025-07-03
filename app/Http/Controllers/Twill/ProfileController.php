@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Twill;
 
 use A17\Twill\Models\Contracts\TwillModelContract;
-
+use A17\Twill\Services\Listings\Columns\Text;
+use A17\Twill\Services\Listings\TableColumns;
 use A17\Twill\Services\Forms\Fields\Input;
-use A17\Twill\Services\Forms\Fields\Checkbox;;
+use A17\Twill\Services\Forms\Fields\Checkbox;
+use A17\Twill\Services\Forms\Fields\Select;
 use A17\Twill\Services\Forms\Options;
 use A17\Twill\Services\Forms\Form;
 use A17\Twill\Services\Forms\InlineRepeater;
 use A17\Twill\Services\Forms\Fields\Browser;
 use App\Models\Program;
+use App\Models\ProgramBelt;
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
 use A17\Twill\Services\Forms\Option;
 
@@ -49,10 +52,35 @@ class ProfileController extends BaseModuleController
                 Checkbox::make()->name('programs_' . $program->id)->label($program->title)
             );
         }
-
+       
+        $options = [];
+        foreach (ProgramBelt::where('program_id', 1)->get() as $belt) {
+            $options[] = Option::make($belt->id, $belt->name);
+        }
+   
+        $form->add(
+            Select::make()
+                ->name('current_belt')
+                ->label('Current Belt')
+                ->options(Options::make($options))
+        );
+        
+        
+        
         return $form;
     }
+    protected function additionalIndexTableColumns(): TableColumns
+    {
+        $table = parent::additionalIndexTableColumns();
 
+        $table->add(
+            Text::make()->field('current_belt_name')->title('Current Belt')->sortable(false)
+        );
+
+
+
+        return $table;
+    }
     /**
      * This is an example and can be removed if no modifications are needed to the table.
      */

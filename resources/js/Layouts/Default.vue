@@ -1,6 +1,6 @@
 <template>
-    <div class="relative min-h-screen">
-        <div class="pb-10">
+    <div class=" w-full h-auto min-h-screen flex flex-col">
+        <div class="flex-1">
             <!-- Added z-20 to ensure header is above other content, including the main area and any fixed backgrounds -->
             <header
                 class="sticky z-20 top-0 left-0 w-screen bg-(--color-primary-500) border-b border-(--color-tertiary-500)"
@@ -147,17 +147,19 @@
                 <option value="fire">Fire</option>
                 <option value="midnight">Midnight</option>
                 <option value="lcars">LCARS</option>
+                <option value="gated">Gated</option>
             </select>
             <!-- Added z-0 and a background color.
          z-0 ensures this main content area is above any z-index: -1 elements (like the homepage canvas)
          and correctly positioned below the z-20 header.
          IMPORTANT: Replace 'bg-white dark:bg-neutral-800' with your site's actual page background color classes or variables. -->
-            <main class="gradient grow flex flex-col">
+            <main class=" relative flex-1 flex flex-col">
                 <!-- Allow main to grow and be a flex container for its slot -->
                 <slot></slot>
             </main>
-            <footer
-                class="bg-(--color-primary-500) border-t border-(--color-accent) mt-auto absolute bottom-0 h-10"
+        </div>
+        <footer
+            class="bg-(--color-primary-500) border-t border-(--color-accent) mt-20 h-10"
             >
                 <div class="lg:grid lg:grid-cols-8 bg-(--color-primary-500)">
                     <div class="relative ml-10 block lg:col-span-3">
@@ -320,7 +322,6 @@
                     </div>
                 </div>
             </footer>
-        </div>
     </div>
 </template>
 <script setup>

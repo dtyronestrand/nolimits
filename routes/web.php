@@ -9,6 +9,9 @@ use App\Http\Controllers\ProgramController;
 use Inertia\Inertia;
 
 
+Route::get('/welcome' , function(){
+    return Inertia::render('Welcome');
+});
 
 Route::get('/', HomeController::class)->name('home');
 
