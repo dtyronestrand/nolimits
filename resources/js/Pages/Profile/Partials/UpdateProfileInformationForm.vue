@@ -18,6 +18,11 @@ const form = useForm({
     first_name: props.user.first_name,
     last_name: props.user.last_name,
     email: props.user.email,
+    address: props.user.address || '',
+    city: props.user.city || '',
+    state: props.user.state || '',
+    zip: props.user.zip || '',
+    phone: props.user.phone || '',
     photo: null,
 });
 
@@ -189,6 +194,62 @@ const clearPhotoFileInput = () => {
                     <div v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
                         A new verification link has been sent to your email address.
                     </div>
+                </div>
+                <div class="col-span-6 sm:col-span-4 mt-4">
+                    <InputLabel for="address" value="Address" />
+                    <TextInput
+                        id="address"
+                        v-model="form.address"
+                        type="text"
+                        class="mt-1 block w-full"
+                        autocomplete="address-line1"
+                    />
+                    <InputError :message="form.errors.address" class="mt-2" />
+                </div>
+                <div class="col-span-2 sm:col-span-2 mt-4">
+                <inputLabel for="city" value="City" />
+                    <TextInput
+                        id="city"
+                        v-model="form.city"
+                        type="text"
+                        class="mt-1 block w-full"
+                        autocomplete="address-level2"
+                    />
+                    <InputError :message="form.errors.city" class="mt-2" />
+                
+                </div>
+                    <div class="col-span-2 sm:col-span-2 mt-4">
+                    <InputLabel for="state" value="State" />
+                    <TextInput
+                        id="state"
+                        v-model="form.state"
+                        type="text"
+                        class="mt-1 block w-full"
+                        autocomplete="address-level1"
+                    />
+    </div>
+    <div class="col-span-2 sm:col-span-2 mt-4">     
+    
+        <InputLabel for="zip" value="Zip Code" />
+            <TextInput
+                id="zip"
+                v-model="form.zip"
+                type="text"
+                class="mt-1 block w-full"
+                autocomplete="postal-code"
+            />
+            <InputError :message="form.errors.zip" class="mt-2" />
+    </div>
+            <div class="col-span-2 sm:col-span-2 mt-4">
+                <InputLabel for="phone" value="Phone" />
+                <TextInput
+                    id="phone"
+                    v-model="form.phone"
+                    type="tel"
+                    class="mt-1 block w-full"
+                    autocomplete="tel"
+                />
+                <InputError :message="form.errors.phone" class="mt-2" />
                 </div>
             </div>
         </template>

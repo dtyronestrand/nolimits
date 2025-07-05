@@ -28,7 +28,13 @@ class Profile extends Model
         'city',
         'state',
         'zip',
+        'phone',
         'current_belt',
+        'requirements_progress',
+    ];
+    
+    protected $casts = [
+        'requirements_progress' => 'array',
     ];
     
     public $translatedAttributes = [
@@ -44,9 +50,16 @@ class Profile extends Model
         'name',
         'first_name',
         'last_name',
+        'email',
+        'address',
+        'city',
+        'state',
+        'zip',
+        'phone',
         'bio',
         'current_belt',
         'current_belt_name',
+        'requirements_progress',
     ];
     
     public function user(): BelongsTo

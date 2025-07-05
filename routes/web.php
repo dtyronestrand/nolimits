@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\NewsController;
 use Inertia\Inertia;
 
 
@@ -30,6 +31,14 @@ Route::middleware([
 ->where('slug','.*')
     ->name('program.show');
 
+  Route::get('/news', [NewsController::class, 'index']);
+
+    Route::get('/news/{slug}', [News::class, 'show'])
+->where('slug','.*')
+    ->name('news.show');
+
+
 Route::get('/{slug}', [PageController::class, 'show'])
 ->where('slug','.*')
     ->name('page.show');
+Route::put('/profile/{profile}/requirements', [App\Http\Controllers\ProfileRequirementController::class, 'update'])->middleware('auth');

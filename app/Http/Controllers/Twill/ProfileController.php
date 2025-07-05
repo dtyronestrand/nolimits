@@ -45,8 +45,17 @@ class ProfileController extends BaseModuleController
         );
         $form->add(
             Input::make()->name('email')->label('Email')->readOnly(true)
+        )->add(
+            Input::make()->name('address')->label('Address')
+        )->add(Input::make()->name('city')->label('City')
+        )->add(
+            Input::make()->name('state')->label('State')
+        )->add(
+            Input::make()->name('zip')->label('Zip Code')
+        )->add(
+            Input::make()->name('phone')->label('Phone Number')
         );
-        
+ 
         foreach (Program::all() as $program) {
             $form->add(
                 Checkbox::make()->name('programs_' . $program->id)->label($program->title)
@@ -64,8 +73,14 @@ class ProfileController extends BaseModuleController
                 ->label('Current Belt')
                 ->options(Options::make($options))
         );
-        
-        
+        $requirements = ProgramBelt::where('id', $model->current_belt)->first()?->requirements ?? [];
+        if ($requirements) {
+            foreach ($requirements as $requirement){
+                $form->add(
+                    Checkbox::make()->name('requirements_' . $requirement['id'] . '_completed')->label($requirement['requirement_name'])
+                );
+            }
+        }
         
         return $form;
     }

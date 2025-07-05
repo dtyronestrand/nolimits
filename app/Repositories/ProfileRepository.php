@@ -28,9 +28,11 @@ class ProfileRepository extends ModuleRepository
         foreach (\App\Models\Program::all() as $program) {
             $fields['programs_' . $program->id] = in_array($program->id, $selectedPrograms);
         }
-        $currentBelt = $model->programs->pluck('belt')->toArray();
-        foreach(\App\Models\ProgramBelt::all() as $belt){
-            $fields['belts_' . $belt->id] = in_array($belt->id, $currentBelt);
+        // Set requirements checkbox values from stored progress
+        if ($model->current_belt && $model->requirements_progress) {
+            foreach ($model->requirements_progress as $reqId => $progress) {
+                $fields['requirements_' . $reqId . '_completed'] = $progress['completed'] ?? false;
+            }
         }
         return $fields;
     }
@@ -50,6 +52,39 @@ class ProfileRepository extends ModuleRepository
        
         if (isset($fields['current_belt'])) {
             $model->update(['current_belt' => $fields['current_belt']]);
+        }
+        
+        // Save requirements progress
+        if ($model->current_belt) {
+            $requirements = \App\Models\ProgramBelt::find($model->current_belt)?->requirements ?? [];
+            $requirementsProgress = [];
+            
+            // Create a lookup for requirements by ID
+            $requirementLookup = [];
+            foreach ($requirements as $requirement) {
+                $requirementLookup[$requirement['id']] = $requirement;
+            }
+            
+            // Process form fields
+            foreach ($fields as $fieldKey => $value) {
+                if (str_starts_with($fieldKey, 'requirements_') && str_ends_with($fieldKey, '_completed')) {
+                    // Extract requirement ID from field name
+                    $reqId = str_replace(['requirements_', '_completed'], '', $fieldKey);
+                    
+                    if (isset($requirementLookup[$reqId])) {
+                        $requirement = $requirementLookup[$reqId];
+                        $requirementsProgress[$reqId] = [
+                            'requirement_name' => $requirement['requirement_name'],
+                            'type' => $requirement['requirement_type'] ?? null,
+                            'completed' => (bool) $value
+                        ];
+                    }
+                }
+            }
+            
+            if (!empty($requirementsProgress)) {
+                $model->update(['requirements_progress' => $requirementsProgress]);
+            }
         }
         $model->programs()->sync($programsToSync);
         parent::afterSave($model, $fields);

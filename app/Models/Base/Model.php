@@ -67,7 +67,7 @@ class Model extends TwillModel
             foreach ($blockContent as $field => $value) {
                 if (is_array($value)) {
                     if (isset($value[$locale]) || isset($value[$fallbackLocale])) {
-                        $blockContent[$field] = $block->translatedInput($field);
+                        $blockContent[$field] = $field ? $block->translatedInput($field) : null;
                     } else {
                         foreach (config('translatable.locales') as $allowedLocale) {
                             if (isset($value[$allowedLocale])) {

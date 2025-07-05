@@ -49,6 +49,9 @@ const BlockCommonImage = defineAsyncComponent(() => import('../../Components/The
 </template>
 <style scoped>
 .whole-card {
-    background-color: rgba(from var(--color-primary-800) R G B /0.8);
+    background-color: rgba(from var(--color-primary-800) R G B /0.3);
+    box-shadow:  rgba(from var(--color-secondary-800) r g b / 0.5) -20px -20px 45px inset,
+    rgba(from var(--color-secondary-800) r g b / 0.5) 10px 10px 20px, rgba(from var(--color-secondary-800) r g b / 0.5) 5px 5px 10px;
+  
 }
 </style>

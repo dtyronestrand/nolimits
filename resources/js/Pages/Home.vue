@@ -42,7 +42,7 @@ const BlockCommonSlider = defineAsyncComponent(
                 Array.isArray(props.item.blocks) &&
                 props.item.blocks.length > 0
             "
-            class="w-full flex flex-col grow"
+            class="w-full "
         >
             <!-- Added grow to allow this div to expand vertically -->
             <div

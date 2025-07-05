@@ -66,8 +66,9 @@ class ProgramBeltController extends BaseModuleController
                         Option::make('black', 'Black'),
                     ])
                 )
-                    )
-                    ->add(
+                    );
+        $form->add(
+                
                        InlineRepeater::make()
                         ->name('requirements')
                         ->label('Requirements')
@@ -87,19 +88,16 @@ class ProgramBeltController extends BaseModuleController
                     Input::make()
                     ->name('requirement_name')
                     ->label('Requirement Name'),
-                    Select::make()
-                    ->name('completed')
-                    ->label('Completed')
-                    ->options(
-                        Options::make([
-                            Option::make(0, 'No'),
-                            Option::make(1, 'Yes'),
-                        ])
-                    )
+                    Checkbox::make()
+                    ->name('requirement_completed')
+                    ->label('Requirement Completed')
+                ])
+        );
+                
+                    
+            
                   
-        ])
-             
-                );
+  
         return $form;
     }
 

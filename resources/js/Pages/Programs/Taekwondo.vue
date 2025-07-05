@@ -2,19 +2,46 @@
         <Head :item="item"></Head>
               
         <div v-if="$page.props.auth.user !== null && tkdMember" class="flex w-full h-screen">
-        <div class="grid-background"><div class="background-grid">
-        </div>
+     
         <Default>
-                <div class="app max-w-[90vw] max-h-[860px] h-[90vh] mx-auto pb-10 flex flex-col overflow-hidden relative w-full rounded-[14px] backdrop-blur-[20px] ">
+                <div class="app max-w-[95vw] max-h-[960px] h-[90vh] mt-30 mx-auto flex flex-col overflow-hidden relative w-full rounded-[14px] backdrop-blur-[20px] ">
                 <div class="flex grow-1 overflow-hidden ">
                 <div class="basis-[240px] border-r-1 border-[var(--color-accent)] p-[26px] overflow-auto shrink-0 max-[945px]:hidden">
                  <div class="mt-[20px]  flex flex-col justify-center title rounded-2xl w-full ">
-                 <div class="mb-[14px] text-center p-5">No Limits Martial Arts and Fitness</div>
-   <img class="w-[75px] h-[75px] rounded-[50%] object-cover  border-2 border-[var(--color-accent)] ml-[22px]" src="page.props.auth.user.profile_photo_url" alt="page.props.auth.user.name">
-   <div class="mt-12 ">
-   <a href="/programs/taekwondo/videos" >Videos</a>
+                 <h1 class="mb-[14px] text-center p-5">No Limits Martial Arts and Fitness</h1>
+   <img class="w-[75px] h-[75px] rounded-[50%] object-cover border-2 border-[var(--color-accent)] mx-auto" :src="$page.props.auth.user.profile_photo_url" alt="page.props.auth.user.name">
+   <div class="mt-12 ml-5">
+   <NavLink href="/programs/taekwondo/videos" >Videos</NavLink>
    
    </div>
+
+     <div class="mt-4 pb-4 ml-5">
+     <NavLink
+                                        href="/programs/taekwondo/resources"
+                                        class="block py-2 pl-3 pr-4 rounded-sm md:flex md:bg-transparent bg-(--color-primary-600) md:p-0 text-(--color-text-primary) transition hover:text-(--color-secondary-500)"
+                                    >
+                                        Resources
+                                        <svg
+                                            class="icon chevron-icon"
+                                            viewBox="0 0 24 24"
+                                            width="14"
+                                            height="14"
+                                        >
+                                            <path
+                                                d="M7 10l5 5 5-5z"
+                                                fill="currentColor"
+                                            ></path>
+                                        </svg>
+                                    </NavLink>
+   </div>
+
+    <div class=" pb-4 ml-5">
+    <NavLink href="/programs/taekwondo/schedule" >Schedule</NavLink>
+    </div>
+
+   
+   
+  
                 </div>
                                  </div>
                                     <div class=" w-full mt-5 grid grid-rows-4 grid-cols-4 " >
@@ -43,31 +70,31 @@
 <div class=" col-span-1 row-span-2 align-center ">
  <h3 v-if="poomsae && poomsae.length > 0" class="font-bold mt-8 mb-4 text-lg">Poomsae:</h3>
  <div v-for="item in poomsae" :key="item.id" >
- <Input type="checkbox" v-model="item.completed" /> <span class="ml-2 text-balance ">{{ item.requirement_name }}</span>
+ <Input type="checkbox" :checked="item.completed" @change="updateRequirement(item.id, $event.target.checked)" /> <span class="ml-2 text-balance ">{{ item.requirement_name }}</span>
  </div>
 </div>
 <div class=" flex flex-col  row-span-2 align-center px-4 overflow-auto">
  <h3 v-if="ssd && ssd.length > 0" class="font-bold mb-4 mt-8 text-lg">Sparring/Self-Defense:</h3>
     <div v-for="item in ssd" :key="item.id" >
-    <Input type="checkbox" v-model="item.completed" /> <span class="ml-2">{{ item.requirement_name }}</span>
+    <Input type="checkbox" :checked="item.completed" @change="updateRequirement(item.id, $event.target.checked)" /> <span class="ml-2">{{ item.requirement_name }}</span>
     </div>
 </div>
 <div class=" flex flex-col row-span-2 align-center px-10 ">
     <h3 v-if="breaking && breaking.length > 0" class="font-bold  mb-4 mt-8 text-lg">Breaking:</h3>
     <div v-for="item in breaking" :key="item.id" >
-    <Input type="checkbox" v-model="item.completed" /> <span class="ml-2">{{ item.requirement_name }}</span>
+    <Input type="checkbox" :checked="item.completed" @change="updateRequirement(item.id, $event.target.checked)" /> <span class="ml-2">{{ item.requirement_name }}</span>
     </div>  
 </div>
 <div class=" flex flex-col row-span-2 align-center ">
     <h3 v-if="knowledge && knowledge.length > 0" class="font-bold mb-4 mt-8  text-lg">Knowledge:</h3>
     <div v-for="item in knowledge" :key="item.id">
-    <Input type="checkbox" v-model="item.completed" /> <span class="ml-2">{{ item.requirement_name }}</span>
+    <Input type="checkbox" :checked="item.completed" @change="updateRequirement(item.id, $event.target.checked)" /> <span class="ml-2">{{ item.requirement_name }}</span>
     </div>
 </div>
 <div class=" flex flex-col row-span-2 align-center ">
     <h3 v-if="other && other.length > 0" class="font-bold mb-4 mt-8 flex justify-center align-center text-lg">Other:</h3>
     <div v-for="item in other" :key="item.id" >
-    <Input type="checkbox" v-model="item.completed" /> <span class="ml-2">{{ item.requirement_name }}</span>
+    <Input type="checkbox" :checked="item.completed" @change="updateRequirement(item.id, $event.target.checked)" /> <span class="ml-2">{{ item.requirement_name }}</span>
     </div>  
     </div>
 <div class="grid grid-cols-2 col-span-4 grid-rows-4 grid-flow-row">
@@ -123,7 +150,7 @@ My only limitation is myself.
  </div>
                
         </Default>
-        </div>
+      
         </div>
 <div v-else><Default>
     <h1 >
@@ -267,8 +294,8 @@ import Head from '@/Components/Theme/Head.vue';
 import { computed, onMounted, onBeforeUnmount , defineAsyncComponent, ref} from 'vue';
 import Default from '../../Layouts/Default.vue';
 import TextGenerate from '@/Components/Theme/UI/TextGenerate.vue';
-
-import {usePage} from "@inertiajs/vue3";
+import NavLink from '@/Components/NavLink.vue';
+import {usePage, router} from "@inertiajs/vue3";
 interface Props {
     item: Model.Page
 }
@@ -300,27 +327,47 @@ const nextBelt = computed(() => {
     if (!currentPosition) return 'No Next Belt';
     
     const next = belts.find(belt => belt.id === currentPosition + 1);
-    console.log('Next Belt:', next.name);
     return next ? next.name : 'No Next Belt';
 });
+
 const poomsae = computed(() => {
-    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'poomsae') || [];
+    const progress = page.props.auth.user.profile.requirements_progress;
+    if (!progress) return [];
+    return Object.entries(progress)
+        .filter(([id, requirement]) => requirement.type === 'poomsae')
+        .map(([id, requirement]) => ({ ...requirement, id }));
 });
 
 const ssd = computed(() => {
-    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'sparring_self-defense') || [];
+    const progress = page.props.auth.user.profile.requirements_progress;
+    if (!progress) return [];
+    return Object.entries(progress)
+        .filter(([id, requirement]) => requirement.type === 'sparring_self-defense')
+        .map(([id, requirement]) => ({ ...requirement, id }));
 });
 
 const breaking = computed(() => {
-    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'breaking') || [];
+    const progress = page.props.auth.user.profile.requirements_progress;
+    if (!progress) return [];
+    return Object.entries(progress)
+        .filter(([id, requirement]) => requirement.type === 'breaking')
+        .map(([id, requirement]) => ({ ...requirement, id }));
 });
 
 const knowledge = computed(() => {
-    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'knowledge') || [];
+    const progress = page.props.auth.user.profile.requirements_progress;
+    if (!progress) return [];
+    return Object.entries(progress)
+        .filter(([id, requirement]) => requirement.type === 'knowledge')
+        .map(([id, requirement]) => ({ ...requirement, id }));
 });
 
 const other = computed(() => {
-    return page.props.auth.user.profile.current_belt_data?.requirements?.filter(requirement => requirement.requirement_type === 'other') || [];
+    const progress = page.props.auth.user.profile.requirements_progress;
+    if (!progress) return [];
+    return Object.entries(progress)
+        .filter(([id, requirement]) => requirement.type === 'other')
+        .map(([id, requirement]) => ({ ...requirement, id }));
 });
 
 const allRequirements = computed(() => {
@@ -339,6 +386,31 @@ const progressPercentage = computed(() => {
 const canApplyToTest = computed(() => {
     return progressPercentage.value === 100;
 });
+
+const updateRequirement = (requirementId: string, completed: boolean) => {
+    console.log('Updating requirement:', requirementId, completed);
+    console.log('Type of requirementId:', typeof requirementId);
+    console.log('Sample item from poomsae:', poomsae.value[0]);
+    
+    if (!requirementId) {
+        console.error('No requirement ID provided');
+        return;
+    }
+    
+    router.put(`/profile/${page.props.auth.user.profile.id}/requirements`, {
+        requirement_id: String(requirementId),
+        completed: completed
+    }, {
+        preserveState: true,
+        preserveScroll: true,
+        onError: (errors) => {
+            console.error('Update failed:', errors);
+        },
+        onSuccess: () => {
+            console.log('Update successful');
+        }
+    });
+};
 
 
 const words = "What Can Taekwondo Do For You?";
@@ -631,17 +703,7 @@ figure {
     -webkit-backdrop-filter: blur(10px);
 }
 
-.grid-background {
-    height: 125%;
-    background: radial-gradient(ellipse at bottom, #5091DD 0%, #030617 100%);
-    position: relative;
-}
 
-.background-grid {
-    width: 100%;
-    height: 1px;
-    box-shadow: 0px 0px #030617, 0px 0px #030617, 0px 3px #030617, 0px 6px #030617, 0px 9px #030617, 0px 12px #030617, 0px 15px #030617, 0px 18px #030617, 0px 21px #030617, 0px 24px #030617, 0px 27px #030617, 0px 30px #030617, 0px 33px #030617, 0px 36px #030617, 0px 39px #030617, 0px 42px #030617, 0px 45px #030617, 0px 48px #030617, 0px 51px #030617, 0px 54px #030617, 0px 57px #030617, 0px 60px #030617, 0px 63px #030617, 0px 66px #030617, 0px 69px #030617, 0px 72px #030617, 0px 75px #030617, 0px 78px #030617, 0px 81px #030617, 0px 84px #030617, 0px 87px #030617, 0px 90px #030617, 0px 93px #030617, 0px 96px #030617, 0px 99px #030617;
-}
 
 
 

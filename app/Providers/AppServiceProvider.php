@@ -39,8 +39,13 @@ class AppServiceProvider extends ServiceProvider
                 NavigationLink::make()
                 ->title(Str::ucfirst(__('programs')))
                 ->forModule('programs'),
+                NavigationLink::make()
+                ->title(Str::ucfirst(__('news')))
+                ->forModule('news'),
             ])
             );
+        
+
         TwillNavigation::addLink(
             NavigationLink::make()
             ->title(Str::ucfirst(__('navigation')))
@@ -58,6 +63,7 @@ class AppServiceProvider extends ServiceProvider
                 'program' => 'App\Models\Program',
                 'profile' => 'App\Models\Profile',
                 'programBelt' => 'App\Models\ProgramBelt',
+                'news' => 'App\Models\News',
           
             ]);
     }
