@@ -39,7 +39,7 @@ const BlockCommonImage = defineAsyncComponent(() => import('../../Components/The
           <h2 class="text-2xl font-bold text-[var(--color-text-primary)] lg:text-left">{{program.title}}
           </h2>
           <p class="text-[var(--color-text-primary)] text-sm lg:text-left">{{program.tagline}}</p>
-        <IconButton  href="/programs/{{program.slug}}" class="mt-4 mb-2 p-2 bg-(--color-tertiary-500) text-neutral-900 hover:text-(--color-tertiary-500) hover:border-4 hover:border-(--color-tertiary-500) rounded-lg">Explore Program</IconButton>
+        <IconButton  href="/programs/{{program.slug}}" class="mt-4 mb-2 p-2 bg-(--color-accent-500) text-base-900 hover:text-(--color-accent-500) hover:border-4 hover:border-(--color-accent-500) rounded-lg">Explore Program</IconButton>
         </div>
       </div>
     </div>

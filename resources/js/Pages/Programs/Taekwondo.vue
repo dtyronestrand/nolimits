@@ -9,7 +9,8 @@
                 <div class="basis-[240px] border-r-1 border-[var(--color-accent)] p-[26px] overflow-auto shrink-0 max-[945px]:hidden">
                  <div class="mt-[20px]  flex flex-col justify-center title rounded-2xl w-full ">
                  <h1 class="mb-[14px] text-center p-5">No Limits Martial Arts and Fitness</h1>
-   <img class="w-[75px] h-[75px] rounded-[50%] object-cover border-2 border-[var(--color-accent)] mx-auto" :src="$page.props.auth.user.profile_photo_url" alt="page.props.auth.user.name">
+   <img v-if="$page.props.auth.user.profile_photo_url" class="w-[75px] h-[75px] rounded-[50%] object-cover border-2 border-[var(--color-accent)] mx-auto" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name">
+   <div v-else class="w-[75px] h-[75px] rounded-[50%] bg-gray-300 border-2 border-[var(--color-accent)] mx-auto flex items-center justify-center text-2xl font-bold text-gray-600">{{ $page.props.auth.user.name?.charAt(0) || '?' }}</div>
    <div class="mt-12 ml-5">
    <NavLink href="/programs/taekwondo/videos" >Videos</NavLink>
    
@@ -65,7 +66,7 @@
 </p>
    </div>
 <div class="col-span-3 mr-5 row-span-3 ml-2 mt-2 p-5 grid grid-cols-4 grid-rows-4 rounded-2xl title">
- <h2 class="col-span-4 row-span-1 mt-4 text-2xl">Requirements</h2>
+ <h2 class="col-span-4 row-span-1 text-center mt-4 text-2xl">Requirements to Advance</h2>
 
 <div class=" col-span-1 row-span-2 align-center ">
  <h3 v-if="poomsae && poomsae.length > 0" class="font-bold mt-8 mb-4 text-lg">Poomsae:</h3>
@@ -267,7 +268,9 @@ My only limitation is myself.
             </ul>
             </div>
         </article>
-
+<article class="w-1/4 mx-auto">
+<IconButton href="/programs/taekwondo/application">Sign Up</IconButton>
+</article>
     </section>
 
     <div
@@ -295,6 +298,7 @@ import { computed, onMounted, onBeforeUnmount , defineAsyncComponent, ref} from 
 import Default from '../../Layouts/Default.vue';
 import TextGenerate from '@/Components/Theme/UI/TextGenerate.vue';
 import NavLink from '@/Components/NavLink.vue';
+import IconButton from '@/Components/Theme/UI/IconButton.vue';
 import {usePage, router} from "@inertiajs/vue3";
 interface Props {
     item: Model.Page
@@ -693,8 +697,9 @@ figure {
     margin-bottom: 2rem;
 }
 .app{
-    background-color: rgba(from var(--color-primary-900) R G B / 0.3);
+    background-color: rgba(from var(--color-primary-800) R G B / 0.5);
     backdrop-filter: blur(20px) saturate(150%);
+    padding-bottom: 2rem;
 }
 
 .title{

@@ -62,20 +62,20 @@ const BlockCommonSlider = defineAsyncComponent(
         </div>
         <div class="flex flex-row w-full">
             <div
-                class="flex flex-col h-[1] w-[40%] bg-(--color-primary-500) text-(--color-text-primary) p-10 border-2 border-(--color-tertiary-500) shadow-lg"
+                class="flex flex-col h-[1] w-[40%] bg-(--color-primary-500) text-(--color-text-primary) p-10 border-2 border-(--color-accent-500) shadow-lg"
             >
                 <h2 class="text-5xl mb-8 text-center">Find Your Move!</h2>
                 <img src="/assets/images/image-2.png" />
                 <IconButton
                     type="button"
-                    class="mt-6 mb-10 p-2 bg-(--color-tertiary-500) text-neutral-900 hover:text-(--color-tertiary-500) hover:border-4 hover:border-(--color-tertiary-500) rounded-lg]"
+                    class="mt-6 mb-10 p-2 bg-(--color-accent-500) text-neutral-900 hover:text-(--color-accent-500) hover:border-4 hover:border-(--color-accent-500) rounded-lg]"
                     href="/programs"
                     >Explore Our Programs</IconButton
                 >
             </div>
             <form
                 @submit.prevent="submit"
-                class="bg-[var(--color-primary-500)] px-20 text-lg flex align-center justify-center border-2 border-[var(--color-tertiary-500)] shadow-lg"
+                class="bg-[var(--color-primary-500)] px-20 text-lg flex align-center justify-center border-2 border-[var(--color-accent-500)] shadow-lg"
             >
                 <div class="flex flex-row justify-content-center">
                     <div class="flex flex-col">
@@ -95,7 +95,7 @@ const BlockCommonSlider = defineAsyncComponent(
                                     type="text"
                                     id="first_name"
                                     v-model="form.first_name"
-                                    class="col-span-1 border-2 border-(--color-tertiary-500)"
+                                    class="col-span-1 border-2 border-(--color-accent-500)"
                                 />
                             </div>
                             <div class="flex flex-col">
@@ -108,7 +108,7 @@ const BlockCommonSlider = defineAsyncComponent(
                                     type="text"
                                     id="last_name"
                                     v-model="form.last_name"
-                                    class="border-2 border-(--color-tertiary-500)"
+                                    class="border-2 border-(--color-accent-500)"
                                 />
                             </div>
                         </div>
@@ -123,7 +123,7 @@ const BlockCommonSlider = defineAsyncComponent(
                                     type="email"
                                     id="email"
                                     v-model="form.email"
-                                    class="border-2 border-(--color-tertiary-500)"
+                                    class="border-2 border-(--color-accent-500)"
                                 />
                             </div>
                             <div class="flex flex-col">
@@ -136,7 +136,7 @@ const BlockCommonSlider = defineAsyncComponent(
                                     type="tel"
                                     id="phone"
                                     v-model="form.phone"
-                                    class="border-2 border-(--color-tertiary-500)"
+                                    class="border-2 border-(--color-accent-500)"
                                 />
                             </div>
                         </div>
@@ -147,7 +147,7 @@ const BlockCommonSlider = defineAsyncComponent(
                             type="text"
                             id="subject"
                             v-model="form.subject"
-                            class="border-2 border-(--color-tertiary-500)"
+                            class="border-2 border-(--color-accent-500)"
                         />
 
                         <label for="message" class="text-(--color-text-primary)"
@@ -156,11 +156,11 @@ const BlockCommonSlider = defineAsyncComponent(
                         <textarea
                             id="message"
                             v-model="form.message"
-                            class="border-2 border-(--color-tertiary-500)"
+                            class="border-2 border-(--color-accent-500)"
                         ></textarea>
                         <button
                             type="submit"
-                            class="mt-6 mb-10 p-2 bg-[var(--color-tertiary-500)] text-neutral-900 hover:text-[var(--color-tertiary-500)] hover:bg-transparent hover:border-4 hover:border-[var(--color-tertiary-500)] rounded-lg"
+                            class="mt-6 mb-10 p-2 bg-[var(--color-accent-500)] text-neutral-900 hover:text-[var(--color-accent-500)] hover:bg-transparent hover:border-4 hover:border-[var(--color-accent-500)] rounded-lg"
                         >
                             Submit
                         </button>
@@ -173,14 +173,14 @@ const BlockCommonSlider = defineAsyncComponent(
             </form>
 
             <div
-                class="flex justify-center flex-col h-[1] bg-(--color-primary-500) text-(--color-text-primary) p-10 border-2 border-(--color-tertiary-500) shadow-lg"
+                class="flex justify-center flex-col h-[1] bg-(--color-primary-500) text-(--color-text-primary) p-10 border-2 border-(--color-accent-500) shadow-lg"
             >
                 <h2 class="text-5xl text-balance mb-4 text-center">
                     Ready to Start Your Journey?
                 </h2>
                 <IconButton
                     type="button"
-                    class="mt-6 mb-10 p-2 bg-(--color-tertiary-500) text-neutral-900 hover:text-(--color-tertiary-500) hover:border-4 hover:border-(--color-tertiary-500) rounded-lg"
+                    class="mt-6 mb-10 p-2 bg-(--color-accent-500) text-neutral-900 hover:text-(--color-accent-500) hover:border-4 hover:border-(--color-accent-500) rounded-lg"
                     href="/register"
                     >Sign Up</IconButton
                 >

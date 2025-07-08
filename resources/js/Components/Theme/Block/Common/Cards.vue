@@ -32,7 +32,7 @@ const props = defineProps<Props>();
 <template>
     <div v-if="block.content.type === 'profile'" >
                <h1 v-if="block.content?.heading" class="text-7xl font-bold text-center text-(--color-text-primary) mb-10">{{ block.content.heading }}</h1>
-        <div class="flex  flex-col md;flex-row justify-evenly gap-8 items-center "> <!-- Assuming this container was intended -->
+        <div class="flex  flex-col md:flex-row justify-evenly gap-8 items-center "> <!-- Assuming this container was intended -->
  
             <!-- Loop through each child to create a card -->
             <div
@@ -77,7 +77,7 @@ const props = defineProps<Props>();
     position: relative;
   width: 300px;
   height: 400px;
-  background: rgba(from var(--color-primary-800) R G B / 0.2);
+  background: rgba(from var(--color-primary-800) R G B / 0.5);
   margin: 20px;
   box-shadow: 0 15px 35px rgba(from var(--color-accent) R G B / 0.5);
   border-radius: 15px;

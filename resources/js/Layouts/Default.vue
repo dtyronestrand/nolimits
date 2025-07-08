@@ -3,7 +3,7 @@
         <div class="flex-1">
             <!-- Added z-20 to ensure header is above other content, including the main area and any fixed backgrounds -->
             <header
-                class="sticky z-20 top-0 left-0 w-screen bg-(--color-primary-500) border-b border-(--color-tertiary-500)"
+                class="sticky z-20 top-0 left-0 w-screen bg-(--color-primary-500) border-b border-(--color-accent-500)"
             >
                 <nav
                     class="max-w-(--breakpoint-xl) flex flex-wrap items-center justify-between mx-auto p-4"
@@ -11,7 +11,7 @@
                     <!-- Logo -->
                     <NavLink href="/" class="flex items-center">
                         <span
-                            class="self-center text-xl font-semibold whitespace-nowrap text-(--color-tertiary-500)"
+                            class="self-center text-xl font-semibold whitespace-nowrap text-(--color-accent-500)"
                             >NLMAF</span
                         >
                     </NavLink>
@@ -102,7 +102,7 @@
                                     v-if="!link.submenu"
                                     :href="link.url"
                                     :active="isLinkActive(link.url)"
-                                    class="block py-2 pl-3 pr-4 rounded-sm md:bg-transparent bg-(--color-primary-600) md:p-0 text-(--color-text-primary) transition hover:text-(--color-secondary-500)"
+                                    class="block py-2 pl-3 pr-4 rounded-sm md:bg-transparent bg-(--color-primary-500) md:p-0 text-(--color-text-primary) transition hover:text-(--color-accent-500)"
                                     aria-current="page"
                                     >{{ link.title }}</NavLink
                                 >
@@ -413,7 +413,7 @@ const toggleMobileMenu = () => {
     top: calc(100% + 10px);
     left: 0;
     min-width: 220px;
-    background: var(--dropdown-bg);
+    background: var(--color-primary-500);
     backdrop-filter: var(--glass-effect);
     -webkit-backdrop-filter: var(--glass-effect);
     border: 1px solid var(--border-color);
@@ -440,7 +440,7 @@ const toggleMobileMenu = () => {
     left: 20px;
     width: 12px;
     height: 12px;
-    background: var(--dropdown-bg);
+    background: var(--color-primary-500);
     border-left: 1px solid var(--border-color);
     border-top: 1px solid var(--border-color);
     transform: rotate(45deg);
@@ -453,7 +453,7 @@ const toggleMobileMenu = () => {
 }
 
 .dropdown a {
-    color: var(--text-color);
+    color: var(--color-text-primary);
     text-decoration: none;
     padding: 0.7rem 1rem;
     display: block;
@@ -464,7 +464,7 @@ const toggleMobileMenu = () => {
 
 .dropdown a:hover {
     background: rgba(244, 208, 63, 0.15);
-    color: var(--primary-color);
+    color: var(--color-secondary-500);
     transform: translateX(5px);
 }
 </style>
