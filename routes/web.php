@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProgramVideoController;
 use Inertia\Inertia;
 
 
@@ -25,11 +26,22 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+    Route::get("/programs/{taekwondo}/resources/terms", function(){
+        return Inertia::render('Programs/Taekwondo/Resources/Terms');
+    })->middleware('auth:sanctum');
+    
+Route::get('/programs/taekwondo', function () {
+    return Inertia::render('Programs/Taekwondo/Members');
+})->middleware('taekwondo.enrolled');
+
+Route::get('/programs/taekwondo/videos', [ProgramVideoController::class, 'index']);
     Route::get('/programs', [ProgramController::class, 'index']);
 
     Route::get('/programs/{slug}', [ProgramController::class, 'show'])
 ->where('slug','.*')
     ->name('program.show');
+
+
 
   Route::get('/news', [NewsController::class, 'index']);
 

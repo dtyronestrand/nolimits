@@ -31,7 +31,7 @@ class ProgramController extends Controller
     public function show(string $slug): InertiaResponse
     {
         // Check for Taekwondo slug and user tkd attribute
-                  
+    
       
 
         // Get the current locale

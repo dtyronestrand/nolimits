@@ -148,6 +148,7 @@
                 <option value="midnight">Midnight</option>
                 <option value="lcars">LCARS</option>
                 <option value="gated">Gated</option>
+                <option value="trending">Trending</option>
             </select>
             <!-- Added z-0 and a background color.
          z-0 ensures this main content area is above any z-index: -1 elements (like the homepage canvas)

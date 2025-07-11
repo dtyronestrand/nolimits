@@ -58,6 +58,12 @@ class User extends Authenticatable
 
     ];
 
+    public array $publicAttributes = [
+        'name',
+        'first_name',
+        'last_name',
+        'profile_photo_url',
+    ];
     /**
      * Get the attributes that should be cast.
      *

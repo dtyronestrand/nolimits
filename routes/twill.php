@@ -14,3 +14,4 @@ TwillRoutes::module('profiles');
 TwillRoutes::module('programs');
 TwillRoutes::module('programs.belts');
 TwillRoutes::module('news');
+TwillRoutes::module('programs.videos');

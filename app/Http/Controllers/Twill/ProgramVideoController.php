@@ -5,15 +5,15 @@ namespace App\Http\Controllers\Twill;
 use A17\Twill\Models\Contracts\TwillModelContract;
 use A17\Twill\Services\Listings\Columns\Text;
 use A17\Twill\Services\Listings\TableColumns;
-use A17\Twill\Services\Listings\Columns\NestedData;
 use A17\Twill\Services\Forms\Fields\Input;
-use A17\Twill\Services\Forms\Fields\BlockEditor;
 use A17\Twill\Services\Forms\Form;
+use A17\Twill\Services\Breadcrumbs\NestedBreadcrumbs;
 use A17\Twill\Http\Controllers\Admin\NestedModuleController as BaseModuleController;
 
-class ProgramController extends BaseModuleController
+class ProgramVideoController extends BaseModuleController
 {
-    protected $moduleName = 'programs';
+    protected $moduleName = 'programs.videos';
+    protected $modelName = 'ProgramVideo';
     protected $showOnlyParentItemsInBrowsers = true;
     protected $nestedItemsDepth = 1;
     /**
@@ -22,9 +22,21 @@ class ProgramController extends BaseModuleController
     protected function setUpController(): void
     {
         $this->enableReorder();
-          $this->setPermalinkBase('programs');
-        $this->withoutLanguageInPermalink();
+        if (request('program')) {
+            $this->setBreadcrumbs(
+                NestedBreadcrumbs::make()
+                ->forParent(
+                    parentModule: 'programs',
+                    module: $this->moduleName,
+                    activeParentId: request('program'),
+                    repository: \App\Repositories\ProgramRepository::class
+                )
+                ->label('Video')
+            
 
+                );
+            
+        }
     }
 
     /**
@@ -36,27 +48,10 @@ class ProgramController extends BaseModuleController
         $form = parent::getForm($model);
 
         $form->add(
-            Input::make()->name('tagline')->label('Tagline')
-        );
-
-        $form->add(
-            BlockEditor::make()
+            Input::make()->name('url')->label('URL')
         );
 
         return $form;
-    }
-
-    protected function additionalIndexTableColumns(): TableColumns
-    {
-        $table = parent::additionalIndexTableColumns();
-
-        $table->add(
-            NestedData::make()->field('belts')
-        );
-        $table->add(
-            NestedData::make()->field('videos')
-        );
-        return $table;
     }
 
     /**

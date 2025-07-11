@@ -55,4 +55,6 @@ class HandleInertiaRequests extends Middleware
             'navigations' => \App\Models\Navigation::published()->get(),
         ];
     }
+
+    
 }

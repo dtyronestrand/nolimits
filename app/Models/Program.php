@@ -41,6 +41,10 @@ class Program extends Model implements Sortable
         'blocks',
         'medias',
     ];
+    public function videos()
+    {
+        return $this->hasMany(ProgramVideo::class);
+    }
 
     public function profiles()
     {

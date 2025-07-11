@@ -5,6 +5,11 @@ import Default from "../Layouts/Default.vue";
 import { useForm } from "@inertiajs/vue3";
 import IconButton from "../Components/Theme/UI/IconButton.vue";
 import InputError from "../Components/InputError.vue";
+
+defineOptions({
+    layout: Default,
+})
+
 interface Props {
     item: Model.page;
 }
@@ -35,7 +40,7 @@ const BlockCommonSlider = defineAsyncComponent(
 </script>
 <template>
     <Head :item="props.item"></Head>
-    <Default>
+ 
         <div
             v-if="
                 props.item?.blocks &&
@@ -186,5 +191,5 @@ const BlockCommonSlider = defineAsyncComponent(
                 >
             </div>
         </div>
-    </Default>
+   
 </template>

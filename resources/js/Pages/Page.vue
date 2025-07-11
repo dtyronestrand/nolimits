@@ -3,6 +3,9 @@ import Head from '../Components/Theme/Head.vue';
 import WordList from '../Components/Theme/UI/WordList.vue';
 import {defineAsyncComponent} from 'vue';
 import Default from '../Layouts/Default.vue';
+defineOptions({
+    layout: Default,
+});
 
 interface Props {
     item: Model.Page
@@ -15,7 +18,7 @@ const BlockCommonCards = defineAsyncComponent(() => import('../Components/Theme/
 </script>
 <template>
 <Head :item="props.item" :locale="props.locale"></Head>
-<Default>
+
 
     <div v-if="props.item?.blocks && Array.isArray(props.item.blocks) && props.item.blocks.length > 0" class="w-full flex flex-col grow">
         <div v-for="(block, index) in props.item.blocks" :key="block.id || index">
@@ -24,5 +27,5 @@ const BlockCommonCards = defineAsyncComponent(() => import('../Components/Theme/
 
         </div>
     </div>
-    </Default>
+    
 </template>

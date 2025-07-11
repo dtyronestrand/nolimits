@@ -3,6 +3,9 @@ import Default from '../../Layouts/Default.vue';
 import WordList from '../../Components/Theme/UI/WordList.vue';
 import IconButton from '../../Components/Theme/UI/IconButton.vue';
 import {defineAsyncComponent} from 'vue';
+defineOptions({
+  layout: Default,  
+})
 interface Props{
     programs: Model.Program[]
 }
@@ -22,7 +25,7 @@ const props = defineProps<Props>();
 const BlockCommonImage = defineAsyncComponent(() => import('../../Components/Theme/Block/Common/Image.vue'));
 </script>
 <template>
-<Default>
+
 
     <h1 class="text-7xl font-bold text-center text-(--color-text-primary) mt-10 mb-10">Our Programs</h1>
     <div v-for="program in props.programs" :key="program.id" class="flex flex-col w-fit mx-auto text-(--color-text-primary)">
@@ -45,7 +48,7 @@ const BlockCommonImage = defineAsyncComponent(() => import('../../Components/The
     </div>
     </div>
     </div>
-    </Default>
+
 </template>
 <style scoped>
 .whole-card {
