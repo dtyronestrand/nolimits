@@ -56,11 +56,24 @@ class AppServiceProvider extends ServiceProvider
             ->title(Str::ucfirst(__('navigation')))
             ->forModule('navigations')
         );
-        TwillNavigation::addLink(
+              TwillNavigation::addLink(
+            NavigationLink::make()
+            ->title(Str::ucfirst(__('users')))
+            ->forModule('profiles')
+            ->doNotAddSelfAsFirstChild()
+            ->setChildren([
             NavigationLink::make()
             ->title(Str::ucfirst(__('profiles')))
             ->forModule('profiles')
+       ] )
         );
+        
+        TwillNavigation::addLink(
+            NavigationLink::make()
+            ->title(Str::ucfirst(__('website guides')))
+            ->forModule('websiteGuides')
+        );
+
             Relation::enforceMorphMap([
                 'home' => 'App\Models\Home',
                 'navigation' => 'App\Models\Navigation',

@@ -234,7 +234,7 @@ const clearPhotoFileInput = () => {
             <TextInput
                 id="zip"
                 v-model="form.zip"
-                type="text"
+                type="number"
                 class="mt-1 block w-full"
                 autocomplete="postal-code"
             />

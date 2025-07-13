@@ -22,11 +22,19 @@ class ProgramController extends BaseModuleController
     protected function setUpController(): void
     {
         $this->enableReorder();
-          $this->setPermalinkBase('programs');
+     
         $this->withoutLanguageInPermalink();
 
     }
 
+      protected function form(?int $id, TwillModelContract $item = null): array
+    {
+        $item = $this->repository->getById($id, $this->formWith, $this->formWithCount);
+ 
+        $this->permalinkBase = $item->ancestorsSlug;
+ 
+        return parent::form($id, $item);
+    }
     /**
      * See the table builder docs for more information. If you remove this method you can use the blade files.
      * When using twill:module:make you can specify --bladeForm to use a blade form instead.

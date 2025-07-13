@@ -43,10 +43,15 @@ class HandleInertiaRequests extends Middleware
                         return null;
                     }
 
-                    $user = $request->user()->load('profile.programs.programBelts');
+                    $user = $request->user();
                     
-                    if ($user->profile && $user->profile->current_belt) {
-                        $user->profile->current_belt_data = \App\Models\ProgramBelt::select('*')->find($user->profile->current_belt);
+                    // Only load profile for regular users, not Twill users
+                    if (!$user instanceof \A17\Twill\Models\User) {
+                        $user->load('profile.programs.programBelts');
+                        
+                        if ($user->profile && $user->profile->current_belt) {
+                            $user->profile->current_belt_data = \App\Models\ProgramBelt::select('*')->find($user->profile->current_belt);
+                        }
                     }
                     
                     return $user;

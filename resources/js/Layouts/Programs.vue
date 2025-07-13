@@ -32,7 +32,7 @@
    </ul>
                 </div>
                 </aside>
-                <main class="h-full overflow-auto">
+                <main class="w-full flex-1 overflow-auto">
                     <slot/>
                 </main>
                 </div>

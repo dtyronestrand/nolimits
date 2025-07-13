@@ -1,11 +1,21 @@
 <template>
-    <Programs>
-    <h1 class="text-center text-7xl">Basic Korean Terms</h1>
-    <section class="ml-10">
- <h2 class="mt-20 text-5xl mb-20">Counting to Ten</h2>
- 
-<div class="grid grid-cols-5 gap-8 place-content-center">
-<FlipCard v-for="count in counting" :key="count.number" class="m-2 ">
+      <section class="flex flex-col items-center pt-16 justify-center">
+<h1 class="text-7xl font-bold text-[var(--color-text-primary)] mb-4">Basic Korean Terms</h1>
+    </section>
+   
+   <section class="w-[100%] mt-20  mx-auto">
+  <!-- Tab Buttons -->
+  <nav class=" p-2 rounded-t-lg">
+    <div class="flex justify-center space-x-4">
+      <button :class="['px-4 py-2 text-[var(--color-text-primary)] font-semibold border-b-4 border-[var(--color-accent)] hover:text-[var(--color-base-900)] hover:bg-[var(--color-accent)] focus:outline-none tab-button', { active: activeTab === 'tab1' }]" @click="activeTab = 'tab1'">Couting to Ten</button>
+      <button :class="['px-4 py-2 text-[var(--color-text-primary)] font-semibold border-b-4 border-[var(--color-accent)] hover:text-[var(--color-base-900)] hover:bg-[var(--color-accent)] focus:outline-none tab-button', { active: activeTab === 'tab2' }]" @click="activeTab = 'tab2'">Basic Classroom Terms</button>
+    
+    </div>
+  </nav>
+</section>
+  <div v-show="activeTab === 'tab1'" class="p-4 tab-content bg-[var(--color-primary-800)] shadow-md grid grid-cols-5 rounded-lg">
+  
+<FlipCard v-for="count in counting" :key="count.number" class="m-8 col-span-1">
     <template #default>
         <div class="flex flex-col items-center justify-center h-full card " >
             <h3 class="text-3xl font-bold">{{ count.number }}</h3>
@@ -19,12 +29,9 @@
         </div>
     </template>
 </FlipCard>
-</div>
-    </section>
-    <section class="ml-10">
-    <h2 class="mt-20 text-5xl mb-20">Classroom Terms</h2>
-    <div class="grid grid-cols-4 gap-8 place-content-center">
-        <FlipCard v-for="term in classroom" :key="term.english" class="m-2">
+  </div>
+  <div v-show="activeTab === 'tab2'" class="p-4 tab-content bg-[var(--color-primary-800)) shadow-md grid grid-cols-5 rounded-lg">
+       <FlipCard v-for="term in classroom" :key="term.english" class="m-8 col-span-1">
             <template #default>
                 <div class="flex flex-col items-center justify-center h-full card">
                     <h3 class="text-3xl text-center font-bold">{{ term.english }}</h3>
@@ -36,15 +43,22 @@
                 </div>
             </template>
         </FlipCard>
-    </div>
-    </section>
-    </Programs>
+  </div>
+   
+
+
 </template>
 <script setup lang="ts">
 
 import FlipCard from '@/Components/Theme/UI/FlipCard.vue';
 import Programs from '@/Layouts/Programs.vue';
+import { ref } from 'vue';
 
+const activeTab = ref('tab1');
+
+defineOptions({
+    layout: Programs
+});
 let counting = [
     {number: 1, word: "one", korean: "hana"},
     {number: 2, word: "two", korean: "dool"},
@@ -119,4 +133,13 @@ let classroom = [
     border: 2px solid rgba(from var(--color-accent-500) R G B /1);
     padding-inline: 1rem;
 }
+  .tab-button.active {
+    background-color: var(--color-primary-800);
+    border-color: var(--color-secondary-500);
+    color: var(--color-text-primary);
+  }
+
+  .tab-content {
+    background-color: var(--color-primary-800);
+  }
 </style>

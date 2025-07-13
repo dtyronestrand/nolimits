@@ -18,7 +18,7 @@ class ProgramController extends Controller
     {
         return Inertia::render('Programs/Index', [
             'programs' => Program::publishedInListings()
-        
+                ->whereNull('parent_id')
                 ->get()
                 ->map(function ($program) {
                     $program->load('medias', 'blocks');

@@ -1,9 +1,5 @@
 <template>
-
-
-            
-     
-       
+      <blockquote><p class="text-[var(--color-text-primary)]">Train with integrity, humility and heart</p></blockquote> 
                                     <div class=" w-full mt-5 grid grid-rows-4 grid-cols-4 " >
                                     <div class="ml-5 mr-2 text-4xl title col-span-2 p-5 rounded-2xl" >
                                     <h1 >Taekwondo</h1>
@@ -111,12 +107,13 @@ My only limitation is myself.
 </template>
 <script setup lang="ts">
 import Programs from '@/Layouts/Programs.vue';
+import Default from '@/Layouts/Default.vue';
 import { computed, ref } from 'vue';
 import { usePage, router } from '@inertiajs/vue3';
 
 const page = usePage();
 defineOptions({
-    layout: Programs
+    layout: Default
 })
 interface Props {
     item: Model.Page
