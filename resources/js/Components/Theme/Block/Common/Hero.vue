@@ -36,7 +36,7 @@ defineProps<Props>();
             <IconButton
                 v-if="block.content?.button_url && block.content?.button_text"
                 :href="block.content.button_url"
-                class="py-3 w-1/6 mx-auto mt-8 mb-4 bg-(--color-accent) text-neutral-900 font-medium rounded-full hover:bg-transparent hover:border-(--color-tertiary-500) hover:text-(--color-text-primary) transition-colors"
+                class="py-3 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 mx-auto mt-8 mb-4 bg-(--color-accent) text-neutral-900 font-medium rounded-full hover:bg-transparent hover:border-(--color-tertiary-500) hover:text-(--color-text-primary) transition-colors"
             >
                 {{ block.content.button_text }}
             </IconButton>
@@ -44,7 +44,7 @@ defineProps<Props>();
             <Link
                 href="/login"
                 aria-label=""
-                class="px-8 text-neutral-100 font-bold hover:text-(--color-accent-800) text-2xl transition-colors"
+                class="px-4 sm:px-8 text-neutral-100 font-bold hover:text-(--color-accent-800) text-lg sm:text-xl md:text-2xl transition-colors"
                 >Already started your journey? Login!</Link
             >
         </div>
@@ -140,15 +140,27 @@ defineProps<Props>();
     transform: translateY(-50%) translateX(100%);
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 768px) {
+    .banner {
+        margin-bottom: 5rem;
+        margin-top: 2rem;
+    }
     .banner .inner {
         grid-template-rows: 6fr 1fr 6fr;
+        width: 95%;
     }
     .left {
         grid-area: 1 / 1 / 3 / 4;
+        padding: 20px;
+        border-width: 5px;
     }
     .right {
         grid-area: 2 / 1 / 4 / 4;
+        border-width: 5px;
+    }
+    .left p {
+        font-size: 16px;
+        margin-bottom: 30px;
     }
 }
 .hero {
@@ -161,8 +173,16 @@ defineProps<Props>();
 }
 
 .hero img {
-    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
     filter: brightness(0.75) saturate(1.5);
+}
+
+@media screen and (max-width: 768px) {
+    .hero img {
+        height: 70vh;
+    }
 }
 .content {
     /* position content above the image */
@@ -173,9 +193,25 @@ defineProps<Props>();
     background-color: rgba(from var(--color-primary-500) R G B / 0.7);
     backdrop-filter: blur(10px);
     @apply py-6 text-balance rounded-lg;
-    width: 75%;
+    width: 90%;
+    max-width: 800px;
     margin: 0 auto;
-    margin-top: 10rem;
+    margin-top: 5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .content {
+        width: 75%;
+        margin-top: 10rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .content {
+        width: 95%;
+        margin-top: 3rem;
+        padding: 1rem;
+    }
 }
 /* responsive h3 and p */
 .content h1 {
