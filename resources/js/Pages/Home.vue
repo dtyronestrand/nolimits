@@ -65,31 +65,31 @@ const BlockCommonSlider = defineAsyncComponent(
                 ></BlockCommonSlider>
             </div>
         </div>
-        <div class="flex flex-row w-full">
+        <div class="flex flex-col lg:flex-row w-full">
             <div
-                class="flex flex-col h-[1] w-[40%] bg-(--color-primary-500) text-(--color-text-primary) p-10 border-2 border-(--color-accent-500) shadow-lg"
+                class="flex flex-col flex-1 bg-(--color-primary-500) text-(--color-text-primary) p-6 lg:p-10 border-2 border-(--color-accent-500) shadow-lg"
             >
-                <h2 class="text-5xl mb-8 text-center">Find Your Move!</h2>
-                <img src="/assets/images/image-2.png" />
+                <h2 class="text-3xl lg:text-5xl mb-8 text-center">Find Your Move!</h2>
+                <img src="/assets/images/image-2.png" class="flex-grow object-contain" />
                 <IconButton
                     type="button"
-                    class="mt-6 mb-10 p-2 bg-(--color-accent-500) text-neutral-900 hover:text-(--color-accent-500) hover:border-4 hover:border-(--color-accent-500) rounded-lg]"
+                    class="mt-6 mb-10 p-2 bg-(--color-accent-500) text-neutral-900 hover:text-(--color-accent-500) hover:border-4 hover:border-(--color-accent-500) rounded-lg"
                     href="/programs"
                     >Explore Our Programs</IconButton
                 >
             </div>
             <form
                 @submit.prevent="submit"
-                class="bg-[var(--color-primary-500)] px-20 text-lg flex align-center justify-center border-2 border-[var(--color-accent-500)] shadow-lg"
+                class="bg-[var(--color-primary-500)] px-6 lg:px-20 text-lg flex flex-1 align-center justify-center border-2 border-[var(--color-accent-500)] shadow-lg"
             >
                 <div class="flex flex-row justify-content-center">
                     <div class="flex flex-col">
                         <h2
-                            class="text-(--color-text-primary) text-5xl text-center pt-4 mb-6"
+                            class="text-(--color-text-primary) text-3xl lg:text-5xl text-center pt-4 mb-6"
                         >
                             Have a Question? <br />Contact Us
                         </h2>
-                        <div class="flex flex-row gap-4 mt-4 mb-3">
+                        <div class="flex flex-col sm:flex-row gap-4 mt-4 mb-3">
                             <div class="flex flex-col">
                                 <label
                                     for="first_name"
@@ -117,7 +117,7 @@ const BlockCommonSlider = defineAsyncComponent(
                                 />
                             </div>
                         </div>
-                        <div class="flex flex-row gap-4 mb-3">
+                        <div class="flex flex-col sm:flex-row gap-4 mb-3">
                             <div class="flex flex-col">
                                 <label
                                     for="email"
@@ -178,9 +178,9 @@ const BlockCommonSlider = defineAsyncComponent(
             </form>
 
             <div
-                class="flex justify-center flex-col h-[1] bg-(--color-primary-500) text-(--color-text-primary) p-10 border-2 border-(--color-accent-500) shadow-lg"
+                class="flex justify-center flex-col flex-1 bg-(--color-primary-500) text-(--color-text-primary) p-6 lg:p-10 border-2 border-(--color-accent-500) shadow-lg"
             >
-                <h2 class="text-5xl text-balance mb-4 text-center">
+                <h2 class="text-3xl lg:text-5xl text-balance mb-4 text-center">
                     Ready to Start Your Journey?
                 </h2>
                 <IconButton

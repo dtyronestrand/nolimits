@@ -349,7 +349,7 @@ const handleLogout = () => {
     router.post(route("logout"));
 };
 const handleLogin = () => {
-    router.visit(route("login"));
+    router.visit("login");
 };
 
 const getCurrentPath = computed(() => {

@@ -1,5 +1,6 @@
 <template>
-      <blockquote><p class="text-[var(--color-text-primary)]">Train with integrity, humility and heart</p></blockquote> 
+      <blockquote><h1 class="text-balance mb-4 text-center text-7xl text-[var(--color-text-primary)]">Train with integrity, humility and heart.</h1>
+      <p class="pr-40 text-right text-3xl mb-12">--School Motto</p></blockquote> 
                                     <div class=" w-full mt-5 grid grid-rows-4 grid-cols-4 " >
                                     <div class="ml-5 mr-2 text-4xl title col-span-2 p-5 rounded-2xl" >
                                     <h1 >Taekwondo</h1>
