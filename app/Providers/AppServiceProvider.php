@@ -25,7 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (config('app.env') !== 'local') {
+        // Only force HTTPS in production, not in development or staging
+        if (config('app.env') === 'production') {
             URL::forceScheme('https');
         }
         
@@ -82,8 +83,7 @@ class AppServiceProvider extends ServiceProvider
                 'profile' => 'App\Models\Profile',
                 'programBelt' => 'App\Models\ProgramBelt',
                 'news' => 'App\Models\News',
-                'programVideo' => 'App\Models\ProgramVideo',
-          
+                'programVideo' => 'App\Models\ProgramVideo'
             ]);
     }
 }

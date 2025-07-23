@@ -40,7 +40,7 @@ const BlockCommonSlider = defineAsyncComponent(
 </script>
 <template>
     <Head :item="props.item"></Head>
- 
+
         <div
             v-if="
                 props.item?.blocks &&

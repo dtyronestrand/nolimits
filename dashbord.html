@@ -1,0 +1,42 @@
+<div class="flex w-full">
+    <aside class="sidebar w-[15%] p-5 flex flex-col justify-between">
+        <h2 class="mb-5 text-2xl">Taekwondo</h2>
+        <ul class="list-none">
+            <li>Dashboard</li>
+            <li>Resources</li>
+        </ul>
+    </aside>
+    <main class="flex-1 p-5">
+        <header>
+            <h1 class="text-[1.8rem] mb-5">Welcome Back, {{page.props.auth.user.profile.name}}</h1>
+        </header>
+        <section class="cards">
+
+        </section>
+    </main>
+</div>
+
+<style>
+    .sidebar{
+        background: rgba(from var(--color-primary-800) R G B / 0.05);
+        backdrop-filter: blur(12px);
+    }
+    .sidebar ul li {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar ul li.active,
+.sidebar ul li:hover {
+  background: rgba(from var(--color-primary-800) R G B / 0.1);
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+</style>

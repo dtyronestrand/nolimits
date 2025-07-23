@@ -15,6 +15,38 @@ Route::get('/welcome' , function(){
     return Inertia::render('Welcome');
 });
 
+Route::get('/auth-check', function() {
+    return ['authenticated' => auth()->check(), 'user' => auth()->user()];
+});
+
+Route::get('/debug-login', function() {
+    return [
+        'session_driver' => config('session.driver'),
+        'session_domain' => config('session.domain'),
+        'session_secure' => config('session.secure'),
+        'sanctum_stateful' => config('sanctum.stateful'),
+        'app_url' => config('app.url'),
+        'request_url' => request()->url(),
+        'request_host' => request()->getHost(),
+        'request_port' => request()->getPort(),
+        'cookies' => request()->cookies->all()
+    ];
+});
+
+Route::post('/test-login', function(\Illuminate\Http\Request $request) {
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+ 
+    if (\Illuminate\Support\Facades\Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return ['success' => true, 'user' => auth()->user()];
+    }
+ 
+    return ['success' => false, 'message' => 'Invalid credentials'];
+});
+
 Route::get('/', HomeController::class)->name('home');
 
 Route::middleware([
@@ -45,7 +77,7 @@ Route::get('/programs/taekwondo/videos', [ProgramVideoController::class, 'index'
 
   Route::get('/news', [NewsController::class, 'index']);
 
-    Route::get('/news/{slug}', [News::class, 'show'])
+    Route::get('/news/{slug}', [NewsController::class, 'show'])
 ->where('slug','.*')
     ->name('news.show');
 

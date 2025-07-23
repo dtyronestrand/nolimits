@@ -1,43 +1,33 @@
 <template>
 
-<div class="flex w-full">
-    <aside class="sidebar w-[250px] p-5 flex flex-col">
-        <h2 class="text-2xl mb-6">Taekwondo</h2>
-        <ul class="list-none">
-            <li>Dashboard</li>
-            <li>Resources</li>
-        </ul>
-    </aside>
-    <main class="flex-1 p-5 bck">
-    
-        <header>
-            <h1 class="text-[1.8rem] text-[var(--color-base-900)] mb-5">Welcome Back, {{page.props.auth.user.profile.name}}</h1>
-                    <blockquote class="col-span-4 row-span-2 mb-4"><h1 class="text-balance mb-4 text-center text-7xl text-[var(--color-text-primary)]">Train with integrity, humility and heart.</h1>
+                                    <div class=" w-full mt-5 grid grid-rows-auto grid-cols-4 gap-4 wrapper pb-8" >
+                                          <blockquote class="col-span-4 row-span-2 mb-4"><h1 class="text-balance mb-4 text-center text-7xl text-[var(--color-text-primary)]">Train with integrity, humility and heart.</h1>
       <p class="pr-80 text-right text-3xl mb-4">--School Motto</p></blockquote> 
-        </header>
-        <section class="cards">
-            <div class="card">
-                   <h2 class="text-center mb-2 text-2xl">Current Belt </h2>
+                                    <div class="text-4xl ml-5 title col-span-2 row-span-2 p-5 rounded-2xl" >
+                                    <h1 >Taekwondo</h1>
+                                      <h2 class="text-2xl">{{ page.props.auth.user.profile.name }}</h2>
+                                      </div>
+                                      <div class="col-span-1 row-span-1 title rounded-2xl">
+                                        <h2 class="text-center mb-2 text-2xl">Current Belt </h2>
    <p class="text-lg leading-tight text-center">{{ page.props.auth.user.profile.current_belt_data.name }}</p>
-            </div>
-            <div class="card">
+                                      </div>
+                                      <div class="col-span-1 col-start-3 row-start-4 row-span-1 title rounded-2xl">
       <h2 class="text-center mb-2 text-2xl">Next Belt</h2>
    <p class="text-lg text-center leading-tight">
 {{ nextBelt }}
    </p>
-            </div>
-<div class="card">
+                                    </div>
+                                       <div class="col-span-1 row-span-2 mr-5   px-2 rounded-2xl title">
    <h2 class="text-center mb-2 text-2xl">Student Oath</h2>
-   <p class="text-lg leading-tight text-balance ">      
+   <p class="text-lg leading-tight text-balance ">		
 I will come to each class with an open mind and loving spirit.
 I will honor martial arts tradition, unaffected by the expectations of others.
 I will set goals and work hard to achieve them.
 My only limitation is myself.
 </p>
-</div>
-</section>
-<section class="cards mt-5">
-<div class="card">
+ </div>
+
+<div class="col-span-2 ml-5  ml-2 mt-2 p-5 grid grid-cols-4 grid-rows-4 rounded-2xl title">
  <h2 class="col-span-4 row-span-1 text-center mt-4 text-2xl">Requirements to Advance</h2>
 
 <div class=" col-span-1 row-span-2 align-center ">
@@ -92,12 +82,29 @@ My only limitation is myself.
      Apply to Test
    </a>
   </div>
+ </div>
 </div>
-            </div>
-        </section>
 
-    </main>
-</div>
+
+
+
+
+
+ 
+ <!-- Progress Bar and Test Button -->
+ 
+
+
+ 
+
+
+
+
+
+
+
+        </div>
+
 </template>
 <script setup lang="ts">
 import Programs from '@/Layouts/Programs.vue';
@@ -227,54 +234,14 @@ const updateRequirement = (requirementId: string, completed: boolean) => {
 
 </script>
 <style scoped>
-
-/* Added background to main content */
-.bck {
-    background: linear-gradient(
-        135deg,
-        var(--color-primary-500) 0%, /* Adjusted to a lighter green/yellow for top-left */
-        var(--color-accent) 25%, /* A warmer orange/yellow */
-        var(--color-secondary-500) 50%, /* Reddish-orange */
-        var(--color-tertiary-500) 75%, /* Deeper reddish-purple */
-        var(--color-base-900) 100% /* Deep purple for bottom-right */
-    );
-}
- 
-    .sidebar{
-     background-image: url('/assets/images/tkdbg.png');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-        backdrop-filter: blur(12px);
-    }
-    .sidebar ul li {
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
+.title{
+    background-color: rgba(from white R G B / 0.5);
+    backdrop-filter: blur(10px) saturate(100%);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.sidebar ul li.active,
-.sidebar ul li:hover {
-  background: rgba(from var(--color-primary-800) R G B / 0.1);
-}
-
-.cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-
-.card {
-  background: rgba(from var(--color-primary-800) R G B / 0.25);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 8px 24px rgba(from var(--color-accent) R G B / 0.2);
-  transition: transform 0.5s ease, box-shadow 0.3s ease;
+.wrapper {
+background-image: radial-gradient(at 51.065191389994894% 76.91707296581353%, hsla(9.10112359550562, 87.25490196078431%, 40%, 1) 0%, hsla(9.10112359550562, 87.25490196078431%, 40%, 0) 100%), radial-gradient(at 75.89373935692424% 14.101068549569174%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 1) 0%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 0) 100%), radial-gradient(at 58.88588858504086% 8.770959965556269%, hsla(9.10112359550562, 87.25490196078431%, 40%, 1) 0%, hsla(9.10112359550562, 87.25490196078431%, 40%, 0) 100%), radial-gradient(at 11.456032727549593% 75.34706360248937%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 1) 0%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 0) 100%), radial-gradient(at 22.284957820650696% 5.651279351895999%, hsla(9.10112359550562, 87.25490196078431%, 40%, 1) 0%, hsla(9.10112359550562, 87.25490196078431%, 40%, 0) 100%), radial-gradient(at 68.44846965743663% 83.69530918905443%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 1) 0%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 0) 100%), radial-gradient(at 82.51847167625877% 68.96132079634332%, hsla(9.10112359550562, 87.25490196078431%, 40%, 1) 0%, hsla(9.10112359550562, 87.25490196078431%, 40%, 0) 100%), radial-gradient(at 95.3564406956666% 58.89400641423362%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 1) 0%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 0) 100%), radial-gradient(at 35.32646264864153% 65.63830906681288%, hsla(9.10112359550562, 87.25490196078431%, 40%, 1) 0%, hsla(9.10112359550562, 87.25490196078431%, 40%, 0) 100%), radial-gradient(at 70.40989224006027% 54.34467322265526%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 1) 0%, hsla(32.036199095022624, 94.04255319148936%, 46.07843137254902%, 0) 100%);
 }
 
 icon {
