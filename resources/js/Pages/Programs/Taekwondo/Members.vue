@@ -1,6 +1,11 @@
 <template>
+    <div class="relative">
+        <!-- Flickering grid positioned as a background element -->
 
-<div class="flex w-full">
+        
+        <!-- Main content positioned above the grid -->
+        <div class="wrapper">
+        <div class="flex w-full relative">
     <aside class="sidebar w-[250px] p-5 flex flex-col">
         <h2 class="text-2xl mb-6">Taekwondo</h2>
         <ul class="list-none">
@@ -9,9 +14,9 @@
         </ul>
     </aside>
     <main class="flex-1 p-5 bck">
-    
+
         <header>
-            <h1 class="text-[1.8rem] text-[var(--color-base-900)] mb-5">Welcome Back, {{page.props.auth.user.profile.name}}</h1>
+            <h1 class="text-[1.8rem]  mb-5">Welcome Back, {{page.props.auth.user.profile.name}}</h1>
                     <blockquote class="col-span-4 row-span-2 mb-4"><h1 class="text-balance mb-4 text-center text-7xl text-[var(--color-text-primary)]">Train with integrity, humility and heart.</h1>
       <p class="pr-80 text-right text-3xl mb-4">--School Motto</p></blockquote> 
         </header>
@@ -98,13 +103,15 @@ My only limitation is myself.
 
     </main>
 </div>
+</div>
+    </div>
 </template>
 <script setup lang="ts">
 import Programs from '@/Layouts/Programs.vue';
 import Default from '@/Layouts/Default.vue';
 import { computed, ref } from 'vue';
 import { usePage, router } from '@inertiajs/vue3';
-
+import FlickeringGrid from '@/Components/Theme/UI/FlickeringGrid.vue';
 const page = usePage();
 defineOptions({
     layout: Default
@@ -229,22 +236,15 @@ const updateRequirement = (requirementId: string, completed: boolean) => {
 <style scoped>
 
 /* Added background to main content */
-.bck {
-    background: linear-gradient(
-        135deg,
-        var(--color-primary-500) 0%, /* Adjusted to a lighter green/yellow for top-left */
-        var(--color-accent) 25%, /* A warmer orange/yellow */
-        var(--color-secondary-500) 50%, /* Reddish-orange */
-        var(--color-tertiary-500) 75%, /* Deeper reddish-purple */
-        var(--color-base-900) 100% /* Deep purple for bottom-right */
-    );
+.wrapper{
+    background-color: rgba(from var(--color-primary-500) R G B / 0.25);
+    height:100%;
+  
 }
  
     .sidebar{
-     background-image: url('/assets/images/tkdbg.png');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+        background-color: rgba(from var(--color-secondary-900) R G B / 0.5);
+        border-radius: 15px;
         backdrop-filter: blur(12px);
     }
     .sidebar ul li {
@@ -268,13 +268,13 @@ background-repeat: no-repeat;
 
 
 .card {
-  background: rgba(from var(--color-primary-800) R G B / 0.25);
-  backdrop-filter: blur(10px);
-  padding: 20px;
+  background: rgba(from var(--color-secondary-900) R G B / 0.5);
+backdrop-filter: blur(4px);
+  padding: 1.5rem;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(from var(--color-accent) R G B / 0.2);
-  transition: transform 0.5s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease;
 }
 
 icon {
