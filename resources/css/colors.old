@@ -1,5 +1,5 @@
 /* 🔴 Primary - Ember Red */
-    --color-primary: var(--color-primary-500);
+    --color-primary: var(--color-surface-base);
     --color-primary-100: #f9e4e2;
     --color-primary-200: #f2c1be;
     --color-primary-300: #e89a93;

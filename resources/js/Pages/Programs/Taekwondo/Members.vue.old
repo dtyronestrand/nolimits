@@ -63,7 +63,7 @@ My only limitation is myself.
 <div class="grid grid-cols-2 col-span-4 grid-rows-4 grid-flow-row">
    <h3 class="text-lg font-bold mb-2 col-span-4 row-span-1">Progress to Next Belt</h3>
    <div class="w-full bg-gray-200 col-span-4 row-span-2 rounded-full h-6 mb-4 relative">
-     <div class="bg-[var(--color-accent)] h-6 rounded-full transition-all duration-300 flex items-center justify-center text-xs text-white font-medium" :style="{ width: progressPercentage + '%' }">
+     <div class="bg-[var(--color-primary-base)] h-6 rounded-full transition-all duration-300 flex items-center justify-center text-xs text-white font-medium" :style="{ width: progressPercentage + '%' }">
        <span v-if="progressPercentage > 20">{{ completedRequirements }}/{{ allRequirements.length }} ({{ progressPercentage }}%)</span>
      </div>
      <div v-if="progressPercentage <= 20" class="absolute inset-0 flex items-center justify-center text-xs text-gray-600">
@@ -75,7 +75,7 @@ My only limitation is myself.
      :href="canApplyToTest ? '/testing-app' : '#'"
      :class="[
        'px-6 py-2 rounded-lg text-white font-medium transition-all',
-       canApplyToTest ? 'bg-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] cursor-pointer' : 'bg-gray-400 cursor-not-allowed'
+       canApplyToTest ? 'bg-[var(--color-primary-base)] hover:bg-[var(--color-accent-dark)] cursor-pointer' : 'bg-gray-400 cursor-not-allowed'
      ]"
      :disabled="!canApplyToTest"
    >
@@ -267,7 +267,7 @@ icon {
     top: calc(100% + 10px);
     left: 0;
     min-width: 220px;
-    background: var(--color-primary-500);
+    background: var(--color-surface-base);
     backdrop-filter: var(--glass-effect);
     -webkit-backdrop-filter: var(--glass-effect);
     border: 1px solid var(--border-color);
@@ -294,7 +294,7 @@ icon {
     left: 20px;
     width: 12px;
     height: 12px;
-    background: var(--color-primary-500);
+    background: var(--color-surface-base);
     border-left: 1px solid var(--border-color);
     border-top: 1px solid var(--border-color);
     transform: rotate(45deg);

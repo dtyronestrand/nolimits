@@ -89,9 +89,9 @@ defineProps<Props>();
 }
 .left {
     grid-area: 1 / 1 / 3 / 3;
-    border: 10px solid var(--color-accent);
+    border: 10px solid var(--color-primary-base);
     padding: 30px;
-    background-color: rgba(from var(--color-primary-500) R G B / 0.8);
+    background-color: rgba(from var(--color-surface-base) R G B / 0.8);
     backdrop-filter: blur(10px);
     @apply rounded-lg text-[var(--color-text-primary)];
     position: relative;
@@ -110,7 +110,7 @@ defineProps<Props>();
 
 .right {
     grid-area: 2 / 2 / 4 / 4;
-    border: 10px solid var(--color-accent);
+    border: 10px solid var(--color-primary-base);
     z-index: -1;
     position: relative;
 }
@@ -129,7 +129,7 @@ defineProps<Props>();
     top: 50%;
     height: 50%;
     width: 50vw;
-    background: var(--color-accent);
+    background: var(--color-primary-base);
 }
 .left::before {
     left: 0;
@@ -190,7 +190,7 @@ defineProps<Props>();
     align-self: center;
     color: #fff;
     text-align: center;
-    background-color: rgba(from var(--color-primary-500) R G B / 0.7);
+    background-color: rgba(from var(--color-surface-base) R G B / 0.7);
     backdrop-filter: blur(10px);
     @apply py-6 text-balance rounded-lg;
     width: 90%;

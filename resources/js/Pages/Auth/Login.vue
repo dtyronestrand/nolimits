@@ -1,13 +1,14 @@
 <script setup>
-import { Head, Link, useForm } from '@inertiajs/vue3';
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
+import { Head, Link, useForm } from "@inertiajs/vue3";
+import AuthenticationCard from "@/Components/AuthenticationCard.vue";
+import AuthenticationCardLogo from "@/Components/AuthenticationCardLogo.vue";
 
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import InteractiveGridPattern from '@/Components/Theme/UI/InteractiveGridPattern.vue';
+import Checkbox from "@/Components/Checkbox.vue";
+import InputError from "@/Components/InputError.vue";
+import InputLabel from "@/Components/InputLabel.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import TextInput from "@/Components/TextInput.vue";
+import InteractiveGridPattern from "@/Components/Theme/UI/InteractiveGridPattern.vue";
 
 defineProps({
     canResetPassword: Boolean,
@@ -15,28 +16,30 @@ defineProps({
 });
 
 const form = useForm({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     remember: false,
 });
 
 const submit = () => {
-    form.transform(data => ({
+    form.transform((data) => ({
         ...data,
-        remember: form.remember ? 'on' : '',
-    })).post(route('login'), {
-        onFinish: () => form.reset('password'),
+        remember: form.remember ? "on" : "",
+    })).post(route("login"), {
+        onFinish: () => form.reset("password"),
     });
 };
 </script>
 
 <template>
     <Head title="Log in" />
-    <InteractiveGridPattern  :class="'[mask-image:radial-gradient(750px_circle_at_center,white,transparent)] '"
-      :width="40"
-      :height="40"
-      :squares="[80, 80]"
-      squares-class-name="hover:fill-[var(--color-accent)]" />
+    <InteractiveGridPattern
+        :class="'[mask-image:radial-gradient(750px_circle_at_center,white,transparent)] '"
+        :width="40"
+        :height="40"
+        :squares="[80, 80]"
+        squares-class-name="hover:fill-[var(--color-primary-base)]"
+    />
     <AuthenticationCard>
         <template #logo>
             <AuthenticationCardLogo />
@@ -53,7 +56,7 @@ const submit = () => {
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full text-[var(--color-text-dark)]"
                     required
                     autofocus
                     autocomplete="username"
@@ -67,7 +70,7 @@ const submit = () => {
                     id="password"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1 block w-full text-[var(--color-text-dark)]"
                     required
                     autocomplete="current-password"
                 />
@@ -77,16 +80,26 @@ const submit = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ms-2 text-sm text-[var(--color-text-primary)]">Remember me</span>
+                    <span class="ms-2 text-sm text-[var(--color-text-primary)]"
+                        >Remember me</span
+                    >
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-[var(--color-text-primary)] hover:text-[var(--color-accent)] rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-i[var(--color-accent)]">
+                <Link
+                    v-if="canResetPassword"
+                    :href="route('password.request')"
+                    class="underline text-sm text-[var(--color-text-primary)] hover:text-[var(--color-primary-base)] rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-i[var(--color-primary-base)]"
+                >
                     Forgot your password?
                 </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton
+                    class="ms-4"
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                >
                     Log in
                 </PrimaryButton>
             </div>

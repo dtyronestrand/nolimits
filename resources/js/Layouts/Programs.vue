@@ -1,43 +1,64 @@
 <template>
- <Default>
-                <div class="app max-w-[95vw] h-[100vh] mt-30 mx-auto flex overflow-hidden relative w-full rounded-[14px] backdrop-blur-[20px]">
-                <aside class="basis-[240px] border-r-1 border-[var(--color-accent)] p-[26px] overflow-auto shrink-0 max-[945px]:hidden">
-                 <div class="mt-[20px] flex flex-col justify-center title rounded-2xl w-full">
-                 <h1 class="mb-[14px] text-center p-5">No Limits Martial Arts and Fitness</h1>
+    <Default>
+        <div
+            class="app max-w-[95vw] h-[100vh] mt-30 mx-auto flex overflow-hidden relative w-full rounded-[14px] backdrop-blur-[20px]"
+        >
+            <aside
+                class="basis-[240px] border-r-1 border-[var(--color-primary-base)] p-[26px] overflow-auto shrink-0 max-[945px]:hidden"
+            >
+                <div
+                    class="mt-[20px] flex flex-col justify-center title rounded-2xl w-full"
+                >
+                    <h1 class="mb-[14px] text-center p-5">
+                        No Limits Martial Arts and Fitness
+                    </h1>
 
-   <ul class="mt-10">
-   <li class="mb-2">
-   <NavLink href="/programs/taekwondo" :active="isLinkActive('/programs/taekwondo')" >Dashboard</NavLink>
-   </li>
-    <li class="mb-4">
-   <NavLink href="/programs/taekwondo/videos" >Videos</NavLink>
-</li>
-<li class="mb-4">
-
-     <p class="block py-2 pl-3 pr-4 rounded-sm md:flex md:bg-transparent bg-(--color-primary-600) md:p-0 text-(--color-text-primary) transition hover:text-(--color-secondary-500)">
-                                        Resources
-                                    </p>
-                                        <ul class="ml-5">
-                                        <li>
-                                            <NavLink
-                                                :active="isLinkActive('/programs/taekwondo/resources/term')"
-                                                href="/programs/taekwondo/resources/terms"
-                                                >Basic Korean Terms</NavLink>
-                                        </li>
-                                    </ul>
-  </li>
-<li class="mb-4">
-    <NavLink href="/programs/taekwondo/schedule" >Schedule</NavLink>
-   </li>
-   </ul>
+                    <ul class="mt-10">
+                        <li class="mb-2">
+                            <NavLink
+                                href="/programs/taekwondo"
+                                :active="isLinkActive('/programs/taekwondo')"
+                                >Dashboard</NavLink
+                            >
+                        </li>
+                        <li class="mb-4">
+                            <NavLink href="/programs/taekwondo/videos"
+                                >Videos</NavLink
+                            >
+                        </li>
+                        <li class="mb-4">
+                            <p
+                                class="block py-2 pl-3 pr-4 rounded-sm md:flex md:bg-transparent bg-(--color-primary-600) md:p-0 text-(--color-text-primary) transition hover:text-(--color-secondary-500)"
+                            >
+                                Resources
+                            </p>
+                            <ul class="ml-5">
+                                <li>
+                                    <NavLink
+                                        :active="
+                                            isLinkActive(
+                                                '/programs/taekwondo/resources/term'
+                                            )
+                                        "
+                                        href="/programs/taekwondo/resources/terms"
+                                        >Basic Korean Terms</NavLink
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="mb-4">
+                            <NavLink href="/programs/taekwondo/schedule"
+                                >Schedule</NavLink
+                            >
+                        </li>
+                    </ul>
                 </div>
-                </aside>
-                <main class="w-full flex-1 overflow-auto">
-                    <slot/>
-                </main>
-                </div>
-                </Default>
-
+            </aside>
+            <main class="w-full flex-1 overflow-auto">
+                <slot />
+            </main>
+        </div>
+    </Default>
 </template>
 <script setup lang="ts">
 import NavLink from "@/Components/NavLink.vue";
@@ -80,7 +101,7 @@ const toggleMobileMenu = () => {
 </script>
 <style scoped>
 aside {
-        background-color: rgba(from var(--color-primary-800) R G B / 0.5);
+    background-color: rgba(from var(--color-surface-70) R G B / 0.5);
     backdrop-filter: blur(10px) saturate(100%);
     -webkit-backdrop-filter: blur(10px);
 }

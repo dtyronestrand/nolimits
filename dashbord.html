@@ -8,35 +8,35 @@
     </aside>
     <main class="flex-1 p-5">
         <header>
-            <h1 class="text-[1.8rem] mb-5">Welcome Back, {{page.props.auth.user.profile.name}}</h1>
+            <h1 class="text-[1.8rem] mb-5">
+                Welcome Back, {{page.props.auth.user.profile.name}}
+            </h1>
         </header>
-        <section class="cards">
-
-        </section>
+        <section class="cards"></section>
     </main>
 </div>
 
 <style>
-    .sidebar{
-        background: rgba(from var(--color-primary-800) R G B / 0.05);
+    .sidebar {
+        background: rgba(from var(--color-surface-70) R G B / 0.05);
         backdrop-filter: blur(12px);
     }
     .sidebar ul li {
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
 
-.sidebar ul li.active,
-.sidebar ul li:hover {
-  background: rgba(from var(--color-primary-800) R G B / 0.1);
-}
+    .sidebar ul li.active,
+    .sidebar ul li:hover {
+        background: rgba(from var(--color-surface-70) R G B / 0.1);
+    }
 
-.cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
 </style>

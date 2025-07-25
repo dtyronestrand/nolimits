@@ -14,7 +14,7 @@
 
 <style scoped>
 .main-form {
-    background-color: rgba(from var(--color-primary-800) R G B / 0.7);
+    background-color: rgba(from var(--color-surface-70) R G B / 0.7);
     backdrop-filter: blur(10px);
     color: var(--color-neutral-100);
     border: 2px solid var(--color-tertiary-500);

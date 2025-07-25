@@ -6,17 +6,17 @@
     -->
 
     <a
-        class="group flex items-center justify-between gap-4 rounded-lg border border-(--color-accent) bg-(--color-accent) px-5 py-3 transition-colors hover:border-3 hover:border-(--color-tertiary-500) hover:bg-transparent focus:ring-3"
+        class="group flex items-center justify-between gap-4 rounded-lg border border-[var(--color-primary-base)] bg-[var(--color-primary-base)] px-5 py-3 transition-colors hover:border-3 hover:border-(--color-secondary-base) hover:bg-transparent focus:ring-3"
         :href="href"
     >
         <span
-            class="font-bold text-(--color-inverse-text) text-xl transition-colors group-hover:text-(--color-text-primary)"
+            class="font-bold text-[var(--color-text-dark)] group-hover:text-[var(--color-text-primary) text-xl transition-colors group-hover:text-[var(--color-text-primary)]"
         >
             <slot />
         </span>
 
         <span
-            class="shrink-0 rounded-full border-2 border-current bg-(--color-accent-300) p-2 text-(--color-text-inverse) group-hover:bg-transparent group-hover:border-(--color-tertiary-500) group-hover:text-(--color-tertiary-500) transition-colors"
+            class="shrink-0 rounded-full border-2 border-current bg-[var(--color-primary-30)] p-2 text-[var(--color-text-dark)] group-hover:bg-transparent group-hover:border-[var(--color-secondary-base)] group-hover:text-[var(--color-tertiary-500)] transition-colors"
         >
             <svg
                 class="size-5 shadow-xs rtl:rotate-180"
