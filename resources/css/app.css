@@ -42,7 +42,7 @@
 }
 
 :root {
-	--color-surface-base: #1D2b53;
+--color-surface-base: #1D2b53;
 	--color-surface-10: #D2d5dd;
 	--color-surface-30: #8e95A9;
 	--color-surface-50: #434e70;
@@ -95,8 +95,10 @@
 
 --_noise-size: 17%;
 --_gradient-blend-mode: normal;
---_gradient-blur: 40px;
---_gradient: radial-gradient(at 15.976810505685885% 21.258802816901408%, #0A0E1C 0px, transparent 50%), radial-gradient(at 59.38904601518583% 20.836267605633804%, #141E38 0px, transparent 50%), radial-gradient(at 65.99852131767025% 69.85035211267606%, #434F70 0px, transparent 50%), radial-gradient(at 34.453298283085516% 27.596830985915492%, #FCF374 0px, transparent 50%), radial-gradient(at 67.95132083885883% 37.87852112676056%, #CF3E51 0px, transparent 50%);
+--_gradient-blur: 100px;
+--_gradient: radial-gradient(at 62% 65%, #ABA23C 0px, transparent 50%), radial-gradient(at 44% 36%, #FCF374 0px, transparent 50%), radial-gradient(at 46% 80%, #F3FAAC 0px, transparent 50%), radial-gradient(at 99% 80%, #FFFDDE 0px, transparent 50%);
+
+
   
 
 
@@ -110,25 +112,29 @@ html {
 
   body{
 
-background: var(--_gradient) #1d2b53;
-mix-blend-mode: var(--_gradient-blend-mode);
 
 
 overflow-x: hidden;
 color: var(--color-text-primary);
 font-family: 'Andada Pro', serif;
   font-size: 16px;
- display:flex;
-  flex-direction: column;
-    min-height:100vh;
-    width:screen;
+ display:grid;
+ place-content: center;
 
+    min-height:100vh;
+  
+gap: 1rem;
+margin:0;
+padding:0;
 
     overscroll-behavior-y: none;
   }
 main{
-	background: radial-gradient(at 6% 62%, #8D95A8 0px, transparent 50%), radial-gradient(at 24% 36%, #0A0E1C 0px, transparent 50%), radial-gradient(at 90% 96%, #D3D6DE 0px, transparent 50%), radial-gradient(at 10% 43%, #141E38 0px, transparent 50%), radial-gradient(at 73% 31%, #434F70 0px, transparent 50%) #1d2b53;
+background: var(--_gradient) #434e70;
 mix-blend-mode: var(--_gradient-blend-mode);
+
+
+
 }
 @keyframes gradient-animation {
     0% {

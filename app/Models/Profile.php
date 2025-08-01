@@ -87,4 +87,9 @@ class Profile extends Model
     {
         return $this->current_belt ? ProgramBelt::find($this->current_belt)?->name : '-';
     }
+    
+    public function tkdApplications(): HasMany
+    {
+        return $this->hasMany(TKDApplication::class);
+    }
 }

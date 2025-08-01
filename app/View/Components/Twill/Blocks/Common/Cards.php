@@ -17,21 +17,25 @@ class Cards extends Base
     {
         // Define the form structure for the Cards block   
     return Form::make([
-            Select::make()
-                ->name('type')
-                ->label(__('Type'))
-                ->options([
-                    Option::make('profile', __('Profile')),
-                    Option::make('scroll', __('Scroll')),
-                ]),
-            Input::make()->name('heading')->connectedTo('type', 'profile'),
+        
             InlineRepeater::make()
                 ->name('cards')
                 ->label(__('Cards'))
                 ->triggerText(__('Add Card'))
                 ->fields([
+                    Select::make()
+                ->name('type')
+                ->label(__('Type'))
+                ->options([
+                    Option::make('profile', __('Profile')),
+                    Option::make('scroll', __('Scroll')),
+                    Option::make('button', __('Button')),
+                    Option::make('carousel', __('Carousel')),
+                ]),
                     Input::make()->name('title'),
                     Input::make()->name('details'),
+                    Input::make()->name('button_text')->connectedTo('type', 'button'),
+                    Input::make()->name('button_link')->connectedTo('type', 'button'),
                     Medias::make()->name('image')->max(1)
                 ])
         ]);

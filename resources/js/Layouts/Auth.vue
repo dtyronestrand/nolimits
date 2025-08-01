@@ -1,11 +1,10 @@
-<script setup lang="ts">
-import { themeChange } from "theme-change";
-import { onMounted } from "vue";
-
-onMounted(() => {
-    themeChange(false);
-});
-</script>
+<script setup lang="ts"></script>
 <template>
-<slot/>
+    <div class="w-full h-auto min-h-screen flex flex-col">
+        <div class="flex-1">
+        <main >
+            <slot/>
+        </main>
+</div>
+</div>
 </template>

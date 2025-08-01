@@ -26,35 +26,35 @@ const BlockCommonImage = defineAsyncComponent(() => import('../../Components/The
 </script>
 <template>
 
-
-    <h1 class="text-7xl font-bold text-center text-(--color-text-primary) mt-10 mb-10">Our Programs</h1>
-    <div v-for="program in props.programs" :key="program.id" class="flex flex-col w-fit mx-auto text-(--color-text-primary)">
-         <div class="product-card grid grid-cols-1 md:grid-cols-2 gap-10 py-12 lg:pb-8 lg:pt-10">
+<div class="w-full h-[100vh]">
+    <h1 class="text-7xl font-bold text-center text-(--color-text-primary) pt-10 mb-20">Our Programs</h1>
+    <div v-for="program in props.programs" :key="program.id" class=" text-(--color-text-primary)">
+    
     <div
-      class="whole-card border border-(--color-accent) rounded-xl w-fit mx-auto justify-center gap-y-4">
-      <div class="w-full flex flex-col justify-between gap-y-5 max-w-[20rem] mx-auto p-5 rounded-xl">
+      class="whole-card border border-[var(--color-secondary-base)] rounded-xl w-fit mx-auto justify-center gap-y-4">
       <div v-if="program.blocks && program.blocks.length > 0" class="flex flex-col gap-y-4">
-        <div v-for="block in program.blocks" :key="block.id" class="flex flex-col gap-y-2">
-         <img v-if="block.type === 'common-image'" :src="block.medias.common_image.desktop.src"></img>
+        <div v-for="block in program.blocks" :key="block.id" class="flex justify-center">
+         <div v-if="block.type === 'common-image'" :style="`background-image: url(${block.medias.common_image.desktop.src}); width: 128px; height: 128px; border-radius: 50%; background-size: cover; background-position: center; overflow: hidden; aspect-ratio: 1/1; display: block;`"></div>
        </div>
       </div>
+      <div class="w-full flex flex-col justify-between gap-y-5 max-w-[20rem] mx-auto p-5 rounded-xl">
         <div class="flex flex-col gap-y-2">
-          <h2 class="text-2xl font-bold text-[var(--color-text-primary)] lg:text-left">{{program.title}}
+          <h2 class="text-[2rem] font-bold text-[var(--color-text-primary)] lg:text-left">{{program.title}}
           </h2>
-          <p class="text-[var(--color-text-primary)] text-sm lg:text-left">{{program.tagline}}</p>
-        <IconButton  href="/programs/{{program.slug}}" class="mt-4 mb-2 p-2 bg-(--color-accent-500) text-base-900 hover:text-(--color-accent-500) hover:border-4 hover:border-(--color-accent-500) rounded-lg">Explore Program</IconButton>
+          <p class="text-[var(--color-text-primary)] text-[1.2rem] lg:text-left">{{program.tagline}}</p>
+        <IconButton  href="/programs/{{program.slug}}" class="mt-4 mb-2 p-2 bg-(--color-primary-base) text-[var(--color-text-dark)] hover:text-(--color-primary-base) hover:border-4 hover:border-(--color-secondary-base) rounded-lg">Explore Program</IconButton>
         </div>
-      </div>
+     
     </div>
     </div>
     </div>
 
+</div>
 </template>
 <style scoped>
 .whole-card {
-    background-color: rgba(from var(--color-surface-70) R G B /0.3);
-    box-shadow:  rgba(from var(--color-secondary-800) r g b / 0.5) -20px -20px 45px inset,
-    rgba(from var(--color-secondary-800) r g b / 0.5) 10px 10px 20px, rgba(from var(--color-secondary-800) r g b / 0.5) 5px 5px 10px;
+    background-color: rgba(from var(--color-surface-70) R G B /0.7);
+    
   
 }
 </style>

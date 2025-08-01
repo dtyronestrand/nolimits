@@ -3,7 +3,7 @@
         <div class="flex-1">
             <!-- Added z-20 to ensure header is above other content, including the main area and any fixed backgrounds -->
             <header
-                class="sticky z-20 top-0 left-0 w-screen bg-[var(--color-surface-base)] border-b border-[var(--color-primary-base)]"
+                class="sticky z-20 top-0 left-0 w-screen bg-[var(--color-surface-base)] border-b border-[var(--color-secondary-base)]"
             >
                 <nav
                     class="max-w-(--breakpoint-xl) flex flex-wrap items-center justify-between mx-auto p-4"
@@ -36,16 +36,16 @@
                     </div>
                     <div v-else class="md:order-2 ml-2 sm:mr-2">
                         <!-- Adjusted margins for consistency -->
-                        <SecondaryButton @click="handleLogin"
-                            >Login</SecondaryButton
-                        >
+                      <SecondaryButton> <Link  href="/login" method="get" 
+                            >Login</Link
+                        ></SecondaryButton> 
                     </div>
 
                     <!-- Mobile Menu Hamburger Button -->
                     <button
                         type="button"
                         @click="toggleMobileMenu"
-                        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-md md:hidden hover:bg-gray-100 focus:outline-hidden focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        class="inline-flex items-center p-2 ml-1 text-sm text-[var(--color-text-primary)] rounded-md md:hidden hover:bg-[var(--color-base-10)] focus:outline-hidden focus:ring-2 focus:ring-[var(--color-secondary-base)] dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         :aria-expanded="isMobileMenuOpen.toString()"
                         aria-controls="main-menu-content"
                     >
@@ -148,13 +148,13 @@
          z-0 ensures this main content area is above any z-index: -1 elements (like the homepage canvas)
          and correctly positioned below the z-20 header.
          IMPORTANT: Replace 'bg-white dark:bg-neutral-800' with your site's actual page background color classes or variables. -->
-            <main class="relative flex-1 flex flex-col">
+            <main>
                 <!-- Allow main to grow and be a flex container for its slot -->
                 <slot></slot>
             </main>
         </div>
         <footer
-            class="bg-[var(--color-surface-base)] border-t border-[var(--color-primary-base)] mt-20 h-10"
+            class="bg-[var(--color-surface-base)] border-t border-[var(--color-secondary-base)]  h-10"
         >
             <div class="lg:grid lg:grid-cols-8 bg-[var(--color-surface-base)]">
                 <div class="relative ml-10 block lg:col-span-3">
@@ -313,6 +313,7 @@
 </template>
 <script setup>
 import NavLink from "@/Components/NavLink.vue";
+import { Link } from '@inertiajs/vue3';
 import { usePage, router } from "@inertiajs/vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import { ref, computed } from "vue";
@@ -322,9 +323,7 @@ import IconButton from "@/Components/Theme/UI/IconButton.vue";
 import { themeChange } from "theme-change";
 import { onMounted } from "vue";
 
-onMounted(() => {
-    themeChange(false);
-});
+
 defineProps({
     title: String,
 });
@@ -333,9 +332,7 @@ const page = usePage();
 const handleLogout = () => {
     router.post(route("logout"));
 };
-const handleLogin = () => {
-    router.visit("login");
-};
+
 
 const getCurrentPath = computed(() => {
     return page.url.split("?")[0];

@@ -8,8 +8,10 @@
                 <aside class="sidebar w-[250px] p-5 flex flex-col">
                     <h2 class="text-2xl mb-6">Taekwondo</h2>
                     <ul class="list-none">
-                        <li>Dashboard</li>
+                        <li><Link href="/programs/taekwondo/">Dashboard</Link></li>
                         <li>Resources</li>
+                        <li><Link href="/programs/taekwondo/history">History</Link></li>
+                        <li><Link href="/programs/taekwondo/resources/terms">Terms and Symbols</Link></li>
                     </ul>
                 </aside>
                 <main class="flex-1 p-5 bck">
@@ -34,7 +36,7 @@
                             <h2 class="text-center mb-2 text-2xl">
                                 Current Belt
                             </h2>
-                            <p class="text-lg leading-tight text-center">
+                            <p class="text-lg leading-tight text-[1.2rem] text-center">
                                 {{
                                     page.props.auth.user.profile
                                         .current_belt_data.name
@@ -43,7 +45,11 @@
                         </div>
                         <div class="card">
                             <h2 class="text-center mb-2 text-2xl">Next Belt</h2>
-                            <p class="text-lg text-center leading-tight">
+                            <p
+                                class="text-lg text-center text-[1.2rem] leading-tight  pt-5"
+                                :class="{ 'text-[var(--color-text-dark)]': nextBelt === 'White' }"
+                                :style="{ backgroundColor: nextBelt }"
+                            >
                                 {{ nextBelt }}
                             </p>
                         </div>
@@ -51,7 +57,7 @@
                             <h2 class="text-center mb-2 text-2xl">
                                 Student Oath
                             </h2>
-                            <p class="text-lg leading-tight text-balance">
+                            <p class="text-lg leading-tight text-[1.2rem] text-balance">
                                 I will come to each class with an open mind and
                                 loving spirit. I will honor martial arts
                                 tradition, unaffected by the expectations of
@@ -67,7 +73,7 @@
                             >
                                 Requirements to Advance
                             </h2>
-
+                            
                             <div class="col-span-1 row-span-2 align-center">
                                 <h3
                                     v-if="poomsae && poomsae.length > 0"
@@ -252,6 +258,7 @@ import Programs from "@/Layouts/Programs.vue";
 import Default from "@/Layouts/Default.vue";
 import { computed, ref } from "vue";
 import { usePage, router } from "@inertiajs/vue3";
+import {Link} from "@inertiajs/vue3";
 import FlickeringGrid from "@/Components/Theme/UI/FlickeringGrid.vue";
 const page = usePage();
 defineOptions({
@@ -423,9 +430,13 @@ const updateRequirement = (requirementId: string, completed: boolean) => {
     backdrop-filter: blur(4px);
     padding: 1.5rem;
     border-radius: 15px;
-    text-align: center;
+    font-size: 1.2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.15s ease;
+    display:grid;
+    grid-template-rows: repeat(auto-fit, minmax(0.5fr, 1fr));
+
+    
 }
 
 icon {

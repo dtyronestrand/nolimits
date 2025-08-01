@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from "vue";
+import { Link } from "@inertiajs/vue3";
 
 defineOptions({
     name: "BlockCommonCards",
@@ -20,70 +21,66 @@ type PropsChildBlock = {
     content: {
         title?: string;
         details?: string;
+        button_text?: string;
+        button_link?: string;
     };
     medias: {
-        image?: Model.MediaWithRoles | null; // Made image optional to prevent errors if not present
+        image?: Model.MediaWithRoles | null;
     };
-    id?: string | number; // Optional: if childs have unique IDs for keys
+    id?: string | number;
+    type?: string;
 };
 const props = defineProps<Props>();
 </script>
 <template>
-    <div v-if="block.content.type === 'profile'">
-        <h1
-            v-if="block.content?.heading"
-            class="text-7xl font-bold text-center text-(--color-text-primary) mb-10"
-        >
-            {{ block.content.heading }}
-        </h1>
-        <div
-            class="flex flex-col md:flex-row justify-evenly gap-8 items-center"
-        >
-            <!-- Assuming this container was intended -->
+    <div v-if="block.childs && block.childs.length > 0" class="flex flex-col md:flex-row justify-evenly">
+      
+            <div v-for="(child, index) in block.childs" :key="child.id || index">
+                <!-- Button Card -->
 
-            <!-- Loop through each child to create a card -->
-            <div
-                v-if="block.childs && block.childs.length > 0"
-                class="profile-card"
-                v-for="(child, index) in block.childs"
-                :key="child.id || child.content?.title || index"
-            >
-                <div class="profile-content">
-                    <div class="img8x">
-                        <!-- Image for the current child -->
-                        <img
-                            v-if="child.medias?.image?.desktop?.src"
-                            :src="child.medias.image.desktop.src"
-                            :alt="child.content?.title || 'Card Image'"
-                            class="rounded-2xl"
-                        />
-                    </div>
-                    <!-- Content for the current child -->
-                    <div>
-                        <h2
-                            v-if="child.content?.title"
-                            class="font-extrabold text-3xl"
-                        >
-                            {{ child.content.title }}
-                        </h2>
-                        <p
-                            v-if="child.content?.details"
-                            class="font-semibold text-sm"
-                        >
-                            {{ child.content.details }}
+                <Link v-if="child.content?.type === 'button'" 
+                    class="relative bg-[var(--color-surface-70)] block p-6 border-[var(--color-secondary-base)] rounded-lg min-w-lg mx-auto mt-6"
+                    :href="child.content?.button_link || '#'">
+                    <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-[var(--color-primary-base)] via-[var(--color-secondary-30)] to-[var(--color-secondary-base)]"></span>
+                    <div class="my-">
+                        <h3 class="text-[var(--color-text-primary)] text-2xl font-bold pb-2">
+                            {{ child.content?.title || 'Button Title' }}
+                        </h3>
+                        <p class="text-[var(--color-text-primary)] py-1 text-[1.2rem] pb-5">
+                            {{ child.content?.details || 'Button Description' }}
                         </p>
                     </div>
+                    <div class="flex justify-end">
+                        <button class="px-2 py-1 text-[var(--color-text-primary)] border border-[var(--color-secondary-base)] font-semibold rounded hover:bg-[var(--color-primary-base)] hover:text-[var(--color-text-dark)]">
+                            {{ child.content?.button_text }}
+                        </button>
+                    </div>
+                </Link>
+                 <div v-else-if="child.content?.type === 'profile'" class="profile-card">
+                    <div class="profile-content">
+                        <div class="img8x">
+                            <img v-if="child.medias?.image?.desktop?.src"
+                                :src="child.medias.image.desktop.src"
+                                :alt="child.content?.title || 'Card Image'"
+                                class="rounded-2xl" />
+                        </div>
+                        <div>
+                            <h2 v-if="child.content?.title" class="font-extrabold text-3xl">
+                                {{ child.content.title }}
+                            </h2>
+                            <p v-if="child.content?.details" class="font-semibold text-sm">
+                                {{ child.content.details }}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div
-                v-else-if="!block.childs || block.childs.length === 0"
-                class="text-center text-gray-500"
-            >
-                <p>No cards to display.</p>
+      <div v-else-if="child.content?.type === 'carousel'">
+      
+      </div>
+              
             </div>
         </div>
-    </div>
-    <div v-else-if="block.content.type === 'scroll'"><</div>
+    
 </template>
 <style scoped>
 .profile {

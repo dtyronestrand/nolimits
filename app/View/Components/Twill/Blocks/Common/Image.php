@@ -24,17 +24,13 @@ class Image extends Base
                 'desktop' => [
                     [
                         'name' => 'desktop',
-                        'ratio' => 16 / 9,
-                        'minValues' => [
-                            'width' => 1200,
-                            'height' => 675,
-                        ],
+                        'ratio' => 'free',
                     ],
                 ],
                 'tablet' => [
                     [
                         'name' => 'tablet',
-                        'ratio' => 4 / 3,
+                        'ratio' => 1,
                     ],
                 ],
                 'mobile' => [

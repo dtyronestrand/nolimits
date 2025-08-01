@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Twill;
 
 use A17\Twill\Models\Contracts\TwillModelContract;
 use A17\Twill\Services\Listings\Columns\Text;
+use A17\Twill\Services\Forms\Fields\Checkbox;
 use A17\Twill\Services\Listings\TableColumns;
 use A17\Twill\Services\Listings\Columns\NestedData;
 use A17\Twill\Services\Forms\Fields\Input;
@@ -15,7 +16,7 @@ class ProgramController extends BaseModuleController
 {
     protected $moduleName = 'programs';
     protected $showOnlyParentItemsInBrowsers = true;
-    protected $nestedItemsDepth = 1;
+    protected $nestedItemsDepth = 2;
     /**
      * This method can be used to enable/disable defaults. See setUpController in the docs for available options.
      */
@@ -44,7 +45,13 @@ class ProgramController extends BaseModuleController
         $form = parent::getForm($model);
 
         $form->add(
-            Input::make()->name('tagline')->label('Tagline')
+             Checkbox::make()
+            ->name('main_page')
+            ->label('Main Page')
+        );
+        $form->add(
+           
+            Input::make()->name('tagline')->label('Tagline')->connectedTo('main_page', true)
         );
 
         $form->add(

@@ -33,13 +33,14 @@ const submit = () => {
 
 <template>
     <Head title="Log in" />
-    <InteractiveGridPattern
-        :class="'[mask-image:radial-gradient(750px_circle_at_center,white,transparent)] '"
-        :width="40"
-        :height="40"
-        :squares="[80, 80]"
-        squares-class-name="hover:fill-[var(--color-primary-base)]"
-    />
+    <Auth>
+        <InteractiveGridPattern
+            :class="'[mask-image:radial-gradient(750px_circle_at_center,white,transparent)] '"
+            :width="40"
+            :height="40"
+            :squares="[80, 80]"
+            squares-class-name="hover:fill-[var(--color-primary-base)]"
+        />
     <AuthenticationCard>
         <template #logo>
             <AuthenticationCardLogo />
@@ -105,4 +106,5 @@ const submit = () => {
             </div>
         </form>
     </AuthenticationCard>
+</Auth>
 </template>

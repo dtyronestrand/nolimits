@@ -2,19 +2,19 @@
     <div
         v-for="child in block.childs"
         :key="child.content.title"
-        :class="[p - 6, getBentoSize(child)]"
-        class="text-[var(--color-text-primary)]"
+        :class="[ getBentoSize(child)]"
+        class="rounded-xl text-[var(--color-text-primary)]"
     >
-        <div class="flex">
-            <h3 class="text-lg font-semibold mb-1">
-                {{ child.content.title }}
+ 
+            <h3 class="p-10 text-5xl font-semibold mb-1">
+                {{ child.content.title }} 
             </h3>
             <div
-                class="text-sm text-[var(--color-text-secondary)]"
+                class="text-[1.2rem] pl-10 pr-20 leading-5 text-[var(--color-text-secondary)] [&_table]:w-full [&_table]:border-2 [&_table]:border-[var(--color-secondary-base)] [&_td]:border-2 [&_td]:border-[var(--color-secondary-base)] [&_th]:border-2 [&_th]:border-[var(--color-secondary-base)] [&_table]:border-collapse [&_p]:p-2"
                 v-html="child.content.content"
             ></div>
         </div>
-    </div>
+ 
 </template>
 <script setup lang="ts">
 import { Link } from "@inertiajs/vue3";
@@ -25,13 +25,13 @@ defineOptions({
 function getBentoSize(child: BentoItem) {
     switch (child.content?.size) {
         case "small":
-            return "col-span-2 row-span-1 bg-[var(--color-surface-70)]";
+            return "col-span-1 bg-[var(--color-surface-70)]";
         case "medium":
-            return "col-span-3 row-span-2 bg-[var(--color-surface-70)]";
+            return "col-span-2 bg-[var(--color-surface-70)]";
         case "large":
-            return "col-span-4 row-span-3 bg-[var(--color-surface-70)]";
+            return "col-span-3 bg-[var(--color-surface-70)]";
         default:
-            return "col-span-1 row-span-1 bg-[var(--color-surface-70)]";
+            return "col-span-3 bg-[var(--color-surface-70)]";
     }
 }
 type BentoItem = {
@@ -53,3 +53,6 @@ interface Props {
 
 defineProps<Props>();
 </script>
+<style scoped>
+
+</style>

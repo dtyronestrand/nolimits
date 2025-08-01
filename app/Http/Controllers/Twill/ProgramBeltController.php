@@ -9,6 +9,7 @@ use A17\Twill\Services\Listings\TableColumns;
 use A17\Twill\Services\Breadcrumbs\NestedBreadcrumbs;
 use A17\Twill\Services\Forms\Fields\Color;
 use A17\Twill\Services\Forms\Fields\Input;
+use A17\Twill\Services\Forms\Fields\Wysiwyg;
 use A17\Twill\Services\Forms\InlineRepeater;
 use A17\Twill\Services\Forms\Fields\Select;
 use A17\Twill\Services\Forms\Fields\Checkbox;
@@ -68,29 +69,36 @@ class ProgramBeltController extends BaseModuleController
                 )
                     );
         $form->add(
-                
-                       InlineRepeater::make()
-                        ->name('requirements')
-                        ->label('Requirements')
-                        ->fields([
-                              Select::make()
-                ->name('requirement_type')
-                ->label('Requirement Type')
-                ->options(
-                    Options::make([
-                        Option::make('poomsae', 'Poomsae'),
-                        Option::make('sparring_self-defense', 'Sparring / Self-Defense'),
-                        Option::make('breaking', 'Breaking'),
-                        Option::make('knowledge', 'Knowledge'),
-                        Option::make('other', 'Other'),
-                    ])
-                    ),
+            InlineRepeater::make()
+                ->name('requirements')
+                ->label('Requirements')
+                ->fields([
+                    Select::make()
+                        ->name('type')
+                        ->label('Type')
+                        ->required()
+                        ->options(
+                            Options::make([
+                                Option::make('poomsae', 'Poomsae'),
+                                Option::make('sparring_self-defense', 'Sparring / Self-Defense'),
+                                Option::make('breaking', 'Breaking'),
+                                Option::make('knowledge', 'Knowledge'),
+                                Option::make('other', 'Other'),
+                            ])
+                        ),
                     Input::make()
-                    ->name('requirement_name')
-                    ->label('Requirement Name'),
+                        ->name('name')
+                        ->label('Name')
+                        ->required(),
+                    Wysiwyg::make()
+                        ->name('description')
+                        ->label('Description'),
+                    Input::make()
+                        ->name('video_url')
+                        ->label('Video URL'),
                     Checkbox::make()
-                    ->name('requirement_completed')
-                    ->label('Requirement Completed')
+                        ->name('completed')
+                        ->label('Completed')
                 ])
         );
                 

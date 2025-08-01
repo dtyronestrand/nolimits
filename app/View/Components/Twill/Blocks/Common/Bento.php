@@ -39,7 +39,21 @@ class Bento extends Base
                         ->label(__('Title')),
                     Wysiwyg::make()
                             ->name('content') 
-                            ->label(__('Content')),
+                            ->label(__('Content'))
+                            ->toolbarOptions([
+                                'bold',
+                                'italic',
+                                'underline',
+                                'bullet',
+                                'ordered',
+                                'blockquote',
+                                'hr',
+                                'code',
+                                'link',
+                                'clean',
+                                'table',
+                                'align',
+                            ]),
                     Medias::make()
                         ->name('image')
                         ->label(__('Image')),
